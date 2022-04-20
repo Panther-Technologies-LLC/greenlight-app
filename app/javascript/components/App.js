@@ -12,13 +12,13 @@ class App extends React.Component {
   render() {
     return(
       <>
-        <Header {...this.props} />
         <Router>
-          <Switch>
-            <Route exact path="/" component={Home} />
-          </Switch>
-      </Router>
-      <Footer {...this.props} />
+          <Header {...this.props} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+            </Switch>
+          <Footer {...this.props} />
+        </Router>
       </>
     )
   }
