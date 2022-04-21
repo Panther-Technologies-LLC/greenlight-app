@@ -26,7 +26,7 @@ class App extends React.Component {
     fetch("http://localhost:3000/pitchcards")
     .then(response => response.json())
     .then(payload => this.setState({pitchCards: payload}))
-    .catch(errors => console.log("Apartment read errors:", errors))
+    .catch(errors => console.log("PitchCard read errors:", errors))
   }
   render() {
     return(

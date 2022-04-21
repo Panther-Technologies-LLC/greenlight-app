@@ -1,4 +1,4 @@
 class Greenlight < ApplicationRecord
-  belongs_to :userprofile
-  belongs_to :pitchcard
+  belongs_to :user_profile
+  belongs_to :pitch_card
 end

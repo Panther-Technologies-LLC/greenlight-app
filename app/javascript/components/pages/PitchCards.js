@@ -15,6 +15,8 @@ class PitchCards extends Component {
                   <h4>{pitchCard.company_name}</h4>
                   <br />
                   <h5>{pitchCard.company_email}, {pitchCard.funding}, {pitchCard.industry}</h5>
+                  <br />
+                  <h5>{pitchCard.pitch}</h5>
                 </CardTitle>
                 <CardImg src={pitchCard.logo} />
               </Card>
