@@ -17,6 +17,12 @@ class Header extends Component {
       <>
         <h3>Greenlight App</h3>
         <Nav>
+        {logged_in &&
+          <NavItem>
+            <a href={sign_out_route} className="nav-link">Logout</a>
+            <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
+          </NavItem>
+        }
         {!logged_in &&
           <NavItem>
             <a href={new_user_route} className="nav-link">Create Account</a>

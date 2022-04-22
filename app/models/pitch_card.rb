@@ -1,3 +1,3 @@
 class PitchCard < ApplicationRecord
-  belongs_to :userprofile
+  belongs_to :user_profile
 end
