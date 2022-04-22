@@ -21,46 +21,6 @@ pitch_card_1 = [
         funding: "$5000",
         industry: "Technology"
     }
-    # {
-    #     company_email:"chinchilla_company@gmail.com",
-    #     company_name:"The Chinchilla Company",
-    #     logo:"https://scalebranding.com/wp-content/uploads/2021/09/chinchilla.jpg",
-    #     pitch: "We are the Chinchilla company and we like Chinchillas.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed libero enim sed faucibus turpis in eu mi.",
-    #     funding: "$100000",
-    #     industry: "Pet"
-    # },
-    # {
-    #     company_email:"Ichiran_business@gmail.com",
-    #     company_name:"Ichiran Ramen",
-    #     logo:"https://images.getbento.com/4SGlQCmcTvubLzGX4hsG_ichiran_logo.png",
-    #     pitch: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed libero enim sed faucibus turpis in eu mi.",
-    #     funding: "$200000000",
-    #     industry: "Food"
-    # },
-    # {
-    #     company_email:"mergegames@gmail.com",
-    #     company_name:"Merge Games",
-    #     logo:"https://images.squarespace-cdn.com/content/v1/5b113545ee17595a184efefb/1527855250543-Z8W91B391XN82BFGF0XA/Merge-Logo_White.png?format=1500w",
-    #     pitch: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed libero enim sed faucibus turpis in eu mi.",
-    #     funding: "$1000000",
-    #     industry: "Video Games"
-    # },
-    # {
-    #     company_email:"mozilla@gmail.com",
-    #     company_name:"Mozilla Firefox",
-    #     logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/1200px-Firefox_logo%2C_2019.svg.png",
-    #     pitch: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed libero enim sed faucibus turpis in eu mi.",
-    #     funding: "$2000000",
-    #     industry: "Technology"
-    # },
-    # {
-    #     company_email:"kazuhiramiller@gmail.com",
-    #     company_name:"Miller's Chemical Burgers",
-    #     logo:"https://preview.redd.it/zzuuvdgsuzg31.gif?format=png8&s=504abf6a45041c3f1a56f014db4a0dadc790de33",
-    #     pitch: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed libero enim sed faucibus turpis in eu mi.",
-    #     funding: "$5000000",
-    #     industry: "Food"
-    # }
 ]
 user = User.find 1
 user_profile_1 = user.create_user_profile(
