@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
-// react-router import
 import { Redirect } from 'react-router-dom'
 import { NavLink } from 'react-router-dom';
 
@@ -21,10 +20,8 @@ class PitchCardNew extends Component {
 }
 
 handleChange = (e) => {
-  // destructuring form out of state
   let { newPitchCard } = this.state
   newPitchCard[e.target.name] = e.target.value
-  // setting state to the updated form content
   this.setState({newPitchCard: newPitchCard})
 }
 
@@ -69,10 +66,9 @@ handleSubmit = () => {
             </FormGroup>
 
             <FormGroup>
-              <Label for="image">Picture of Cat</Label>
+              <Label for="image">Company Logo</Label>
               <Input
                 name="image"
-                placeholder="What does your cat look like?"
                 text="url"
                 onChange={this.handleChange}
                 value={this.state.newPitchCard.logo}
@@ -108,12 +104,12 @@ handleSubmit = () => {
                 value={this.state.newPitchCard.industry}
               />
             </FormGroup>
-            <Button name="submit" onClick={this.handleSubmit}> Create New Profile! </Button>
+            <Button name="submit" onClick={this.handleSubmit}> Create New Pitch Card </Button>
             <p><NavLink to={`/`}><Button>Go Back to Homepage</Button></NavLink></p>
-            {this.state.submitted && <Redirect to="/catindex" />}
+            {this.state.submitted && <Redirect to="/pitchcards" />}
           </Form>
         </div>
         )
     }
 }
-export default CatNew
+export default PitchCardNew
