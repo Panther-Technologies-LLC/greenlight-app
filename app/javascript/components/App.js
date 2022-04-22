@@ -39,8 +39,8 @@ class App extends React.Component {
     return(
       <>
         <Router>
-          <Header {...this.props} />
-          <Navigation />
+          <Header />
+          <Navigation {...this.props}/>
             <Switch>
               <Route exact path="/" component={Home} />
               {logged_in &&
