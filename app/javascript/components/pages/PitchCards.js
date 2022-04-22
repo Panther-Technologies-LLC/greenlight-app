@@ -3,9 +3,11 @@ import { Card, CardTitle, Col, CardImg, CardText } from 'reactstrap'
 
 class PitchCards extends Component {
   render() {
+    console.log(this.props.pitchCards)
     return(
       <>
         <h4>Pitch Cards</h4>
+
         <br />
         <Col sm="6">
           {this.props.pitchCards.map(pitchCard => {
