@@ -6,12 +6,12 @@ class PitchCards extends Component {
     return(
       <>
 
-          <h4>Pitch Cards</h4>
+          <h4 id="header">Pitch Cards</h4>
 
         <br />
 
         <Col sm="6">
-          {this.props.pitchCards.map(pitchCard => {
+          {this.props.pitchCards && this.props.pitchCards.map(pitchCard => {
             return(
               <Card body key={pitchCard.id}>
                 <CardTitle>
