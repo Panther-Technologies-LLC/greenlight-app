@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import PitchCardIndex from './pages/PitchCardIndex'
+import PitchCardShow from './pages/PitchCardShow'
 import {
   BrowserRouter as  Router,
   Route,
@@ -45,6 +46,16 @@ class App extends React.Component {
               <Route exact path="/" component={Home} />
               {logged_in &&
               <Route path="/pitchcards" render={(props) => <PitchCardIndex {...this.props} pitchCards={this.state.pitchCards} />} />
+              }
+              {logged_in &&
+                <Route
+                path="/pitchcardshow/:id"
+                render={(props) => {
+                  let id = props.match.params.id
+                  let pitchCard = this.state.pitchCards.find(pitchCardObj => pitchCardObj.id === +id)
+                  return <PitchCardShow {...this.props} pitchCard={pitchCard}/>
+                }}
+              />
               }
             </Switch>
           <Footer {...this.props} />
