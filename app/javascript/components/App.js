@@ -52,7 +52,6 @@ class App extends React.Component {
       sign_out_route
     } = this.props
 
-    console.log(current_user)
     return(
       <>
         <Router>
