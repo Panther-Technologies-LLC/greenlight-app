@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Card, CardTitle, Col, CardImg, CardText } from 'reactstrap'
+import { Card, CardTitle, Col, CardImg, CardText, Button } from 'reactstrap'
 
 class PitchCardShow extends Component {
 
@@ -21,6 +21,7 @@ class PitchCardShow extends Component {
                       </CardTitle>
                       <CardImg src={this.props.pitchCard && this.props.pitchCard.logo} />
                     </Card>
+                    <NavLink to={`/pitchcardedit/${this.props.pitchCard && this.props.pitchCard.id}`}> <Button> Edit Pitch Card </Button></NavLink>
               </Col>
 
             </>

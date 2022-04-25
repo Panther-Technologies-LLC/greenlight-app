@@ -6,6 +6,7 @@ import Navigation from './components/Navigation'
 import PitchCardIndex from './pages/PitchCardIndex'
 import PitchCardShow from './pages/PitchCardShow'
 import PitchCardNew from './pages/PitchCardNew'
+import PitchCardEdit from './pages/PitchCardEdit'
 import {
   BrowserRouter as  Router,
   Route,
@@ -43,6 +44,19 @@ class App extends React.Component {
   .then(payload => this.readPitchCard())
   .catch(errors => console.log("PitchCard create errors:", errors))
 }
+
+  updatePitchCard = (pitchCard, id) =>{
+    fetch(`/pitch_cards/${id}`, {
+      body: JSON.stringify(pitchCard),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => response.json())
+    .then(payload => this.readPitchCard())
+    .catch(errors => console.log("PitchCard update errors:", errors))
+  }
   render() {
     const{
       logged_in,
@@ -77,6 +91,14 @@ class App extends React.Component {
                 <Route path="/pitchcardnew"
                 render={(props) => <PitchCardNew {...this.props} createPitchCard={this.createPitchCard} />}
                 />
+              }
+
+              {logged_in &&
+                <Route path="/pitchcardedit/:id" render = {(props) => {
+                  let id = props.match.params.id
+                  let pitchCard = this.state.pitchCards.find(pitchCardObj => pitchCardObj.id === +id)
+                  return <PitchCardEdit {...this.props} updatePitchCard={this.updatePitchCard} pitchCard={pitchCard} />
+                }}/>
               }
             </Switch>
           <Footer {...this.props} />
