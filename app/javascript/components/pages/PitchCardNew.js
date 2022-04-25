@@ -8,8 +8,8 @@ class PitchCardNew extends Component {
   super(props)
   this.state = {
     newPitchCard: {
-      company_email: "",
       company_name: "",
+      company_email: "",
       logo: "",
       pitch: "",
       funding:"",
@@ -26,7 +26,7 @@ handleChange = (e) => {
 }
 
 handleSubmit = () => {
-  this.props.createPitchCard(this.state.newPitchCard)
+  this.props.createPitchCard({...this.state.newPitchCard, user_profile_id: this.props.current_user.id})
   this.setState({submitted:true})
 }
 
@@ -36,9 +36,9 @@ handleSubmit = () => {
           <Form>
             <h2>Create a PitchCard!</h2>
             <FormGroup>
-              <Label for="name">Company Name</Label>
+              <Label for="company_name">Company Name</Label>
               <Input
-                name="name"
+                name="company_name"
                 text="text"
                 onChange={this.handleChange}
                 value={this.state.newPitchCard.company_name}
@@ -46,9 +46,9 @@ handleSubmit = () => {
             </FormGroup>
 
             <FormGroup>
-              <Label for="email">Company Email</Label>
+              <Label for="company_email">Company Email</Label>
               <Input
-                name="email"
+                name="company_email"
                 text="text"
                 onChange={this.handleChange}
                 value={this.state.newPitchCard.company_email}
@@ -59,16 +59,6 @@ handleSubmit = () => {
               <Label for="logo">Company Logo</Label>
               <Input
                 name="logo"
-                text="url"
-                onChange={this.handleChange}
-                value={this.state.newPitchCard.logo}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="image">Company Logo</Label>
-              <Input
-                name="image"
                 text="url"
                 onChange={this.handleChange}
                 value={this.state.newPitchCard.logo}
@@ -104,6 +94,7 @@ handleSubmit = () => {
                 value={this.state.newPitchCard.industry}
               />
             </FormGroup>
+
             <Button name="submit" onClick={this.handleSubmit}> Create New Pitch Card </Button>
             <p><NavLink to={`/`}><Button>Go Back to Homepage</Button></NavLink></p>
             {this.state.submitted && <Redirect to="/pitchcards" />}

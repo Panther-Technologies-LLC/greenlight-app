@@ -10,7 +10,8 @@ class PitchCardsController < ApplicationController
     end
 
     def create
-    pitch_card = PitchCard.create(strong_pitch_card_params)
+    pitch_card = PitchCard.create({**strong_pitch_card_params, user_profile_id: current_user.user_profile.id })
+    p pitch_card
       if pitch_card.valid?
         render json: pitch_card
       else
@@ -39,6 +40,6 @@ class PitchCardsController < ApplicationController
 
     private
     def strong_pitch_card_params
-      params.require(:pitch_card).permit(:company_email, :company_name, :logo, :pitch, :funding, :industry, :user_profile_id)
+      params.require(:pitch_card).permit(:company_email, :company_name, :logo, :pitch, :funding, :industry)
     end
 end

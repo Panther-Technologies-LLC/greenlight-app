@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import PitchCardIndex from './pages/PitchCardIndex'
 import PitchCardShow from './pages/PitchCardShow'
+import PitchCardNew from './pages/PitchCardNew'
 import {
   BrowserRouter as  Router,
   Route,
@@ -29,6 +30,19 @@ class App extends React.Component {
     .then(payload => this.setState({pitchCards: payload}))
     .catch(errors => console.log("PitchCard read errors:", errors))
   }
+
+  createPitchCard = (newPitchCard) => {
+    fetch("/pitch_cards", {
+    body: JSON.stringify(newPitchCard),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  .then(response => response.json())
+  .then(payload => this.readPitchCard())
+  .catch(errors => console.log("PitchCard create errors:", errors))
+}
   render() {
     const{
       logged_in,
@@ -37,6 +51,8 @@ class App extends React.Component {
       sign_in_route,
       sign_out_route
     } = this.props
+
+    console.log(current_user)
     return(
       <>
         <Router>
@@ -56,6 +72,12 @@ class App extends React.Component {
                   return <PitchCardShow {...this.props} pitchCard={pitchCard}/>
                 }}
               />
+              }
+
+              {logged_in &&
+                <Route path="/pitchcardnew"
+                render={(props) => <PitchCardNew {...this.props} createPitchCard={this.createPitchCard} />}
+                />
               }
             </Switch>
           <Footer {...this.props} />

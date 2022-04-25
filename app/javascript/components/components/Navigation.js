@@ -21,6 +21,7 @@ class Navigation extends Component {
           <NavItem>
             <a href={sign_out_route} className="nav-link">Logout</a>
             <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
+            <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
           </NavItem>
         }
         {!logged_in &&

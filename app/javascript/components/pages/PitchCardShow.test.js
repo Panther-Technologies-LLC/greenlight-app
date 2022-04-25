@@ -11,7 +11,7 @@ describe("When PitchCardShow renders", () => {
     company_name: "hello",
     funding:"$4,000",
     industry:"Tech",
-    logo:"hello",
+    logo:"logo",
     pitch:"test"
   }
   it("displays a pitch card", () => {
@@ -19,5 +19,9 @@ describe("When PitchCardShow renders", () => {
     console.log(wrapper.debug())
     const test = wrapper.find("#header").text()
     expect(test).toEqual("Pitch Card Show")
+    expect(wrapper.contains(pitchCard.company_name)).toBeTruthy()
+    expect(wrapper.contains(pitchCard.funding)).toBeTruthy()
+    expect(wrapper.contains(pitchCard.industry)).toBeTruthy()
+    expect(wrapper.contains(pitchCard.pitch)).toBeTruthy()
   })
 })
