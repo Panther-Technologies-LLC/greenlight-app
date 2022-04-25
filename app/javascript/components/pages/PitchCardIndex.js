@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Card, CardTitle, Col, CardImg, CardText } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 
 class PitchCards extends Component {
   render() {
     return(
       <>
 
-          <h4 id="header">Pitch Cards</h4>
+        <h4 id="header">Pitch Cards</h4>
 
         <br />
 
@@ -14,6 +15,7 @@ class PitchCards extends Component {
           {this.props.pitchCards && this.props.pitchCards.map(pitchCard => {
             return(
               <Card body key={pitchCard.id}>
+              <NavLink to={`/pitchcardshow/${pitchCard.id}`}>Click to View Pitch Card</NavLink>
                 <CardTitle>
                   <h4>{pitchCard.company_name}</h4>
                   <br />
