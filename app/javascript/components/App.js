@@ -57,6 +57,19 @@ class App extends React.Component {
     .then(payload => this.readPitchCard())
     .catch(errors => console.log("PitchCard update errors:", errors))
   }
+
+  deletePitchCard = (id) => {
+    fetch(`/pitch_cards/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(payload => this.readPitchCard())
+    .catch(errors => console.log("delete errors:", errors))
+  }
+
   render() {
     const{
       logged_in,
@@ -82,7 +95,7 @@ class App extends React.Component {
                 render={(props) => {
                   let id = props.match.params.id
                   let pitchCard = this.state.pitchCards.find(pitchCardObj => pitchCardObj.id === +id)
-                  return <PitchCardShow {...this.props} pitchCard={pitchCard}/>
+                  return <PitchCardShow {...this.props} deletePitchCard={this.deletePitchCard} pitchCard={pitchCard}/>
                 }}
               />
               }
