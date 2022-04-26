@@ -4,6 +4,14 @@ import { Card, CardTitle, Col, CardImg, CardText, Button } from 'reactstrap'
 
 class PitchCardShow extends Component {
 
+  handleDelete = () => {
+        if(window.confirm("Are you sure you want to delete this pitch card?") === true) {
+          this.props.deletePitchCard(this.props.pitchCard.id)
+          this.setState({ submitted: "true" })
+        } else {
+          this.setState({ submitted: "false" })
+        }
+      }
 
     render() {
       console.log(this.props.pitchCard)
@@ -22,6 +30,7 @@ class PitchCardShow extends Component {
                       <CardImg src={this.props.pitchCard && this.props.pitchCard.logo} />
                     </Card>
                     <NavLink to={`/pitchcardedit/${this.props.pitchCard && this.props.pitchCard.id}`}> <Button> Edit Pitch Card </Button></NavLink>
+                    <NavLink to ={"/pitchcards"}> <Button onClick={this.handleDelete}> Delete this Pitch Card </Button> </NavLink>
               </Col>
 
             </>
