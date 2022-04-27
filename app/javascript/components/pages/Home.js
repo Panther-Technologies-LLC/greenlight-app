@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap'
+import { NavButton } from 'reactstrap'
 
 class Home extends Component {
   render() {
@@ -16,9 +16,9 @@ class Home extends Component {
           <div className="center-horizontal">
             <div className="center-vertical">
               <h1>Funding of the Future</h1>
-                  <Button onClick={location.href = {new_user_route}}>
-                    Create An Account
-                  </Button>
+              <a href="/users/sign_up" className="nav-link">
+                  Create An Account
+              </a>
               <h5>Connecting Investors and Startups one Greenlight at a time</h5>
             </div>
           </div>
