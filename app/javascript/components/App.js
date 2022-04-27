@@ -85,7 +85,7 @@ class App extends React.Component {
         <Router>
           <Header {...this.props} />
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Home} {...this.props} />
               {logged_in &&
               <Route path="/pitchcards" render={(props) => <PitchCardIndex {...this.props} pitchCards={this.state.pitchCards} />} />
               }

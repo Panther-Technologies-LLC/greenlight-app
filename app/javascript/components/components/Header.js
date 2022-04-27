@@ -1,5 +1,17 @@
 import React, { Component } from 'react'
-import { Nav, NavItem } from 'reactstrap'
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  UncontrolledDropdown,
+  DropdownToggle,
+  Collapse,
+  DropdownMenu,
+  DropdownItem,
+  NavbarText,
+  Nav,
+  NavItem }
+  from 'reactstrap'
 import { NavLink } from 'react-router-dom'
 
 class Header extends Component {
@@ -12,25 +24,73 @@ class Header extends Component {
       sign_out_route
     } = this.props
     return(
-
-      <Nav>
-        <NavItem>
-          <NavLink to="/" className="nav-link">Home</NavLink>
-        </NavItem>
-        {logged_in &&
-          <NavItem>
-            <a href={sign_out_route} className="nav-link">Logout</a>
-            <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
-            <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
-          </NavItem>
-        }
-        {!logged_in &&
-          <NavItem>
-            <a href={new_user_route} className="nav-link">Create Account</a>
-            <a href={sign_in_route} className="nav-link">Login</a>
-          </NavItem>
-        }
-      </Nav>
+      <>
+      <div>
+        <Navbar
+          color="light"
+          expand="md"
+          light
+        >
+          <NavbarBrand id="nav" href="/" >
+            Greenlight
+          </NavbarBrand>
+          <NavbarToggler onClick={function noRefCheck(){}} />
+          <Collapse navbar>
+            <Nav
+              className="me-auto"
+              navbar
+            >
+              {logged_in &&
+              <UncontrolledDropdown
+                inNavbar
+                nav
+              >
+                <DropdownToggle
+                  caret
+                  nav
+                >
+                  Profile
+                </DropdownToggle>
+                <DropdownMenu end>
+                  <DropdownItem>
+                    <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a href="/greenlightindex" className="nav-link">Greenlight List</a>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <a href={sign_out_route} className="nav-link">Logout</a>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                </DropdownMenu>
+              </UncontrolledDropdown>
+              }
+              {logged_in &&
+                <NavItem>
+                  <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
+                </NavItem>
+              }
+              {!logged_in &&
+                <NavItem>
+                  <a href={new_user_route} className="nav-link">Create Account</a>
+                </NavItem>
+              }
+              {!logged_in &&
+                <NavItem>
+                  <a href={sign_in_route} className="nav-link">Login</a>
+                </NavItem>
+              }
+            </Nav>
+            <NavbarText>
+              {logged_in && 
+                <div>
+                  Logged in as {current_user.email}
+                </div> }
+            </NavbarText>
+          </Collapse>
+        </Navbar>
+      </div>
+    </>
     )
   }
 }
