@@ -1,12 +1,13 @@
 import React from "react"
+import './App.css'
 import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Navigation from './components/Navigation'
 import PitchCardIndex from './pages/PitchCardIndex'
 import PitchCardShow from './pages/PitchCardShow'
 import PitchCardNew from './pages/PitchCardNew'
 import PitchCardEdit from './pages/PitchCardEdit'
+
 import {
   BrowserRouter as  Router,
   Route,
@@ -82,10 +83,9 @@ class App extends React.Component {
     return(
       <>
         <Router>
-          <Header />
-          <Navigation {...this.props}/>
+          <Header {...this.props} />
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={Home} {...this.props} />
               {logged_in &&
               <Route path="/pitchcards" render={(props) => <PitchCardIndex {...this.props} pitchCards={this.state.pitchCards} />} />
               }
