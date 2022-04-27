@@ -12,16 +12,14 @@ class Home extends Component {
     } = this.props
     return(
       <>
-        <div class="full-page">
-          <div class="center-horizontal">
-            <div class="center-vertical">
+        <div className="full-page">
+          <div className="center-horizontal">
+            <div className="center-vertical">
               <h1>Funding of the Future</h1>
-                <a href={new_user_route} className="nav-link">
-                  <Button>
+                  <Button onClick={location.href = {new_user_route}}>
                     Create An Account
                   </Button>
-                </a>
-              <h4>Description of App here</h4>
+              <h5>Connecting Investors and Startups one Greenlight at a time</h5>
             </div>
           </div>
         </div>

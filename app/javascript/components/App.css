@@ -52,11 +52,12 @@ width: 700px;
 }
 
 h1 {
-font-family: 'PT Sans Narrow', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: "800";
 }
 
-h3 {
-font-family: 'PT Sans Narrow', sans-serif;
+h5 {
+    font-family: 'Inter', sans-serif;
 }
 
 #showpicture {
@@ -215,10 +216,15 @@ object-fit: fill;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    -ms-transform: translateY(-40%);
+    transform: translateY(-40%);
 }
 .center-horizontal{
     display: flex;
-    flex-direction: crow; 
+    flex-direction: row; 
     justify-content: center;
     align-items: center;
 }
