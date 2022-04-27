@@ -212,12 +212,13 @@ object-fit: fill;
   }
 .center-vertical{
     display: flex;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
 }
 .center-horizontal{
     display: flex;
-    a
+    flex-direction: crow; 
     justify-content: center;
     align-items: center;
 }

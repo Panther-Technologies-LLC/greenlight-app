@@ -12,19 +12,19 @@ class Home extends Component {
     } = this.props
     return(
       <>
-      <div class="full-page">
-        <div class="center-center">
-          <h1>Funding of the Future</h1>
-            <br />
-            <a href={new_user_route} className="nav-link">
-              <Button>
-                Create An Account
-              </Button>
-            </a>
-            <br />
-          <h4>Description of App here</h4>
+        <div class="full-page">
+          <div class="center-horizontal">
+            <div class="center-vertical">
+              <h1>Funding of the Future</h1>
+                <a href={new_user_route} className="nav-link">
+                  <Button>
+                    Create An Account
+                  </Button>
+                </a>
+              <h4>Description of App here</h4>
+            </div>
+          </div>
         </div>
-      </div>
       </>
     )
   }
