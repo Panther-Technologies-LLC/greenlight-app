@@ -1,4 +1,7 @@
 {
+  "engines":{
+    "node": "17.x"
+  }
   "dependencies": {
     "@babel/preset-react": "^7.16.7",
     "@rails/activestorage": "^6.1.5",
