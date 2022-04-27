@@ -76,6 +76,10 @@ object-fit: fill;
   color:#737373;
 }
 
+body.bgimage {
+    background-image: url(./assets/bg_image.png);
+}
+
 .site-footer hr {
   border-top-color:#bbb;
   opacity:0.5
@@ -204,6 +208,10 @@ object-fit: fill;
   }
 }
 /*--------------Page formating---------------*/
+#home-page {
+    background-image: url('./assets/bg_image.png');
+}
+
 .full-page {
     margin-top: 30px;
     margin-left: 30px;
