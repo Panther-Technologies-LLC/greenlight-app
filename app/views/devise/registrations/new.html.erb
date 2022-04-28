@@ -8,7 +8,7 @@
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
       </div>
 
       <div class="field">
@@ -16,19 +16,23 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input" %>
       </div>
-
-      <div class="actions">
-        <%= f.submit "Sign up" %>
-      </div>
+      <%= f.submit "Sign up", class: "button" %>
+      <p class="message">
+        Already registered?
+        <%= render "devise/shared/links" %>
+        <br />
+        <a href="/">
+        Return to Home
+        </a>
+      </p>
+      </form>
     <% end %>
-
-    <%= render "devise/shared/links" %>
   </div>
 </div>
