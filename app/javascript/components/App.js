@@ -3,6 +3,7 @@ import './App.css'
 import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import UserProfileNew from './pages/UserProfileNew'
 import PitchCardIndex from './pages/PitchCardIndex'
 import PitchCardShow from './pages/PitchCardShow'
 import PitchCardNew from './pages/PitchCardNew'
@@ -112,6 +113,12 @@ class App extends React.Component {
                   let pitchCard = this.state.pitchCards.find(pitchCardObj => pitchCardObj.id === +id)
                   return <PitchCardEdit {...this.props} updatePitchCard={this.updatePitchCard} pitchCard={pitchCard} />
                 }}/>
+              }
+
+              {logged_in &&
+                <Route path="/userprofilenew"
+                render={(props) => <UserProfileNew {...this.props} />}
+                />
               }
             </Switch>
           <Footer {...this.props} />
