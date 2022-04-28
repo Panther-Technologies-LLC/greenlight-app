@@ -19,13 +19,35 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      pitchCards: []
+      pitchCards: [],
+      userProfiles: []
     }
   }
 
   componentDidMount(){
     this.readPitchCard()
+    this.readUserProfile()
   }
+
+  readUserProfile = () => {
+    fetch("/user_profiles")
+    .then(response => response.json())
+    .then(payload => this.setState({userProfiles: payload}))
+    .catch(errors => console.log("UserProfile read errors:", errors))
+  }
+
+  createUserProfile = (newUserProfile) => {
+    fetch("/user_profiles", {
+    body: JSON.stringify(newUserProfile),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  .then(response => response.json())
+  .then(payload => this.readUserProfile())
+  .catch(errors => console.log("UserProfile create errors:", errors))
+}
 
   readPitchCard = () => {
     fetch("/pitch_cards")
@@ -117,7 +139,7 @@ class App extends React.Component {
 
               {logged_in &&
                 <Route path="/userprofilenew"
-                render={(props) => <UserProfileNew {...this.props} />}
+                render={(props) => <UserProfileNew {...this.props} createUserProfile={this.createUserProfile}  />}
                 />
               }
             </Switch>

@@ -54,6 +54,9 @@ class Header extends Component {
                 </DropdownToggle>
                 <DropdownMenu end>
                   <DropdownItem>
+                    <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
+                  </DropdownItem>
+                  <DropdownItem>
                     <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
                   </DropdownItem>
                   <DropdownItem>

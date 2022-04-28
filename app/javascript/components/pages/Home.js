@@ -11,7 +11,7 @@ class Home extends Component {
     } = this.props
     return(
       <>
-        <div className="full-page" id="home-page">
+        <div id="home-page">
           <div className="center-horizontal">
             <div className="center-vertical">
               <h1>Funding of the Future</h1>

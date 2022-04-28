@@ -211,6 +211,9 @@ body.bgimage {
 /*--------------Page formating---------------*/
 #home-page {
     background-image: url('./assets/bg_image.png');
+    height: 600px;
+    background-size: cover;
+    background-position: center;
 }
 
 .full-page {
@@ -218,7 +221,7 @@ body.bgimage {
     margin-left: 30px;
     margin-right: 30px;
     margin-bottom: 50px;
-    height: 600px;
+
   }
 .center-vertical{
     display: flex;
