@@ -29,6 +29,7 @@ class Header extends Component {
         <Navbar
           color="light"
           expand="md"
+          fixed="top"
           light
         >
           <NavbarBrand id="nav" href="/" >
@@ -52,6 +53,9 @@ class Header extends Component {
                   Profile
                 </DropdownToggle>
                 <DropdownMenu end>
+                  <DropdownItem>
+                    <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
+                  </DropdownItem>
                   <DropdownItem>
                     <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
                   </DropdownItem>
