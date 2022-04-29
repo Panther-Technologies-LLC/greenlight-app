@@ -3,6 +3,24 @@ import { Card, CardTitle, Col, CardImg, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 class PitchCards extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      newGreenlight: {
+        pitch_card_id: "",
+      },
+      submitted:false
+    }
+  }
+
+  handleSubmit = (payload) => {
+    let { newGreenlight } = this.state
+    newGreenlight.pitch_card_id = payload
+    this.setState({newGreenlight: newGreenlight})
+    this.props.createGreenLight({...this.state.newGreenlight, user_profile_id: this.props.current_user.id})
+    this.setState({submitted:true})
+  }
+
   render() {
     return(
       <>
@@ -28,6 +46,8 @@ class PitchCards extends Component {
                           View Pitch
                         </Button>
                       </Link>
+                      <br />
+                      <Button className="custom-btn" onClick={ ()=> this.handleSubmit(`${pitchCard.id}` )}>Greenlight!</Button>
                     </Card>
                   )
                 })}

@@ -148,6 +148,8 @@ class App extends React.Component {
                   <PitchCardIndex
                     {...this.props}
                     pitchCards={this.state.pitchCards}
+                    greenLights={this.state.greenLights}
+                    createGreenLight={this.createGreenLight}
                   />
                 )}
               />
