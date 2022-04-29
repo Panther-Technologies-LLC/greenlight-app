@@ -9,6 +9,7 @@ import PitchCardShow from "./pages/PitchCardShow";
 import PitchCardNew from "./pages/PitchCardNew";
 import PitchCardEdit from "./pages/PitchCardEdit";
 import ContactForm from "./pages/ContactForm";
+import GreenLightIndex from "./pages/GreenLightIndex";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.state = {
       pitchCards: [],
       userProfiles: [],
+      greenLights: [],
     };
   }
 
@@ -88,8 +90,28 @@ class App extends React.Component {
     })
       .then((response) => response.json())
       .then((payload) => this.readPitchCard())
-      .catch((errors) => console.log("delete errors:", errors));
+      .catch((errors) => console.log("PitchCard delete errors:", errors));
   };
+
+  readGreenlight = () => {
+    fetch("/greenlights")
+    .then(response => response.json())
+    .then(payload => this.setState({greenLights: payload}))
+    .catch(errors => console.log("Greenlight read errors:", errors))
+  }
+
+  createGreenlight = (newGreenlight) => {
+    fetch("/greenlights", {
+    body: JSON.stringify(newGreenlight),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  .then(response => response.json())
+  .then(payload => this.readGreenlight())
+  .catch(errors => console.log("Greenlight create errors:", errors))
+  }
 
   render() {
     const {
@@ -188,6 +210,9 @@ class App extends React.Component {
                 )}
               />
             )}
+            {logged_in &&
+              <Route path="/greenlightindex" render={(props) => <GreenlightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenlight={this.deleteGreenlight} />} />
+            }
           </Switch>
           <Footer {...this.props} />
         </Router>

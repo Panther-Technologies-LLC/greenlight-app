@@ -263,6 +263,10 @@ body.bgimage {
     background-position: center;
 }
 
+.white-bg {
+  background-color: white;
+}
+
 .center-vertical{
     display: flex;
     flex-direction: column; 
