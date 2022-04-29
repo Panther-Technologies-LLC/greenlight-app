@@ -1,37 +1,41 @@
 import React, { Component } from 'react'
 import { Card, CardTitle, Col, CardImg, Button } from 'reactstrap'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class GreenLightIndex extends Component {
     render() {
+        console.log(this.props.greenLights[0] && this.props.greenLights[0].pitchcard)
         return (
             <>
-                <div className="white-bg">
-                    <div className="fullpagemargins">
-                        <h4 id="header">Greenlight List</h4>
-                        {console.log('this.state.greenlight_list')}
-                        {console.log(this.state.greenlight_list)}
-                        {console.log('this.state.greenlight_list')}
-                        <Col sm="6">
-                            {this.props.greenLights && this.greenlight_list.map(v => {
-                                return (
-                                    <Card body key={v.id}>
+                <div className="fullpagemargins">
+                    <div className="center-vertical-cards">
+                        <h2 id="header">Greenlight List</h2>
+                        <div className="center-horizontal">
+                            <br />
+                            <Col>
+                            {this.props.greenLights[0] && this.props.greenLights.map(greenlight => {
+                                    return (
+                                        <Card body className="index-card" key={greenlight.pitchcard.id}>
+                                        <CardImg className="index-image" src={greenlight.pitchcard.logo} />
                                         <CardTitle>
-                                            <h4>{v.company_name}</h4>
-                                            <br />
-                                            <h5>{v.company_email}, {v.funding}, {v.industry}</h5>
-                                            <br />
+                                            <div id="card-title">
+                                                <h2>{greenlight.pitchcard.company_name}</h2>
+                                                <h3>{greenlight.pitchcard.industry}</h3>
+                                            </div>
                                         </CardTitle>
-                                        <CardImg src={v.logo} />
-                                        <NavLink to={"/greenlightindex"}>
-                                            <Button onClick={() => this.handleDelete(`${v.id}`)}>
-                                                Delete this Greenlight
+                                        <h2>{greenlight.pitchcard.funding}</h2><br />
+                                        <Link to={`/pitchcardshow/${greenlight.pitchcard.id}`}>
+                                            <Button className="pitch-button">
+                                                View Pitch
                                             </Button>
-                                        </NavLink>
+                                        </Link>
                                     </Card>
-                                )
-                            })}
-                        </Col>
+
+                                    )
+                                })}
+
+                            </Col>
+                        </div>
                     </div>
                 </div>
             </>

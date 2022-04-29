@@ -26,6 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     this.readPitchCard();
     this.readUserProfile();
+    this.readGreenlights();
   }
 
   readUserProfile = () => {
@@ -93,7 +94,7 @@ class App extends React.Component {
       .catch((errors) => console.log("PitchCard delete errors:", errors));
   };
 
-  readGreenlight = () => {
+  readGreenlights = () => {
     fetch("/greenlights")
     .then(response => response.json())
     .then(payload => this.setState({greenLights: payload}))
@@ -211,7 +212,7 @@ class App extends React.Component {
               />
             )}
             {logged_in &&
-              <Route path="/greenlightindex" render={(props) => <GreenlightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenlight={this.deleteGreenlight} />} />
+              <Route path="/greenlightindex" render={(props) => <GreenLightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenlight={this.deleteGreenlight} />} />
             }
           </Switch>
           <Footer {...this.props} />
