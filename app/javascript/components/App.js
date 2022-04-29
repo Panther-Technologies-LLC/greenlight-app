@@ -26,7 +26,7 @@ class App extends React.Component {
   componentDidMount() {
     this.readPitchCard();
     this.readUserProfile();
-    this.readGreenlights();
+    this.readGreenLights();
   }
 
   readUserProfile = () => {
@@ -94,24 +94,36 @@ class App extends React.Component {
       .catch((errors) => console.log("PitchCard delete errors:", errors));
   };
 
-  readGreenlights = () => {
+  readGreenLights = () => {
     fetch("/greenlights")
     .then(response => response.json())
     .then(payload => this.setState({greenLights: payload}))
     .catch(errors => console.log("Greenlight read errors:", errors))
   }
 
-  createGreenlight = (newGreenlight) => {
+  createGreenLight = (newGreenLight) => {
     fetch("/greenlights", {
-    body: JSON.stringify(newGreenlight),
+    body: JSON.stringify(newGreenLight),
     headers: {
       "Content-Type": "application/json"
     },
     method: "POST"
   })
   .then(response => response.json())
-  .then(payload => this.readGreenlight())
+  .then(payload => this.readGreenLights())
   .catch(errors => console.log("Greenlight create errors:", errors))
+  }
+
+  deleteGreenLight = (id) => {
+    fetch(`/greenlights/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(payload => this.readGreenLights())
+    .catch(errors => console.log("delete errors:", errors))
   }
 
   render() {
@@ -212,7 +224,7 @@ class App extends React.Component {
               />
             )}
             {logged_in &&
-              <Route path="/greenlightindex" render={(props) => <GreenLightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenlight={this.deleteGreenlight} />} />
+              <Route path="/greenlightindex" render={(props) => <GreenLightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenLight={this.deleteGreenLight} />} />
             }
           </Switch>
           <Footer {...this.props} />
