@@ -39,66 +39,67 @@ class Header extends Component {
             </NavbarBrand>
             <NavbarToggler onClick={function noRefCheck() { }} />
             <Collapse navbar>
-              <NavbarText>
+              <Nav
+                className="me-auto vert-center"
+                navbar
+              >
                 {logged_in &&
-                  <div>
-                    Signed in as {current_user.email}
-                  </div>}
-              </NavbarText>
-
-            </Collapse>
-            <Nav
-              className="me-auto vert-center"
-              navbar
-            >
-              {logged_in &&
-                <NavItem>
-                  <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
-                </NavItem>
-              }
-              {logged_in &&
-                <UncontrolledDropdown
-                  inNavbar
-                  nav
-                >
-                  <DropdownToggle
-                    caret
+                  <NavItem>
+                    <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
+                  </NavItem>
+                }
+              </Nav>
+              <Nav navbar>
+                <NavbarText>
+                  {logged_in &&
+                    <div>
+                      Signed in as {current_user.email}
+                    </div>}
+                </NavbarText>
+                {logged_in &&
+                  <UncontrolledDropdown
+                    inNavbar
                     nav
                   >
-                    <i className="fa-solid fa-user green nav-icon"></i>
-                  </DropdownToggle>
-                  <DropdownMenu
-                    end
-                    className="dropdown-right"
-                  >
-                    <DropdownItem>
-                      <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <a href="/greenlightindex" className="nav-link">Greenlight List</a>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              }
-              {!logged_in &&
-                <NavItem>
-                  <a href={new_user_route} className="signin-btn btn btn-secondary">Sign-Up</a>
-                </NavItem>
-              }
-              {!logged_in &&
-                <NavItem>
-                  <a href={sign_in_route} className="signin-btn btn btn-secondary">Login</a>
-                </NavItem>
-              }
-              {logged_in &&
-                <NavItem>
-                  <a href={sign_out_route} className="signout-btn btn btn-secondary">Logout</a>
-                </NavItem>
-              }
-            </Nav>
+                    <DropdownToggle
+                      caret
+                      nav
+                    >
+                      <i className="fa-solid fa-user green nav-icon"></i>
+                    </DropdownToggle>
+                    <DropdownMenu
+                      end
+                      className="dropdown-right"
+                    >
+                      <DropdownItem>
+                        <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
+                      </DropdownItem>
+                      <DropdownItem>
+                        <a href="/greenlightindex" className="nav-link">Greenlight List</a>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                }
+                {!logged_in &&
+                  <NavItem>
+                    <a href={new_user_route} className="signin-btn btn btn-secondary">Sign-Up</a>
+                  </NavItem>
+                }
+                {!logged_in &&
+                  <NavItem>
+                    <a href={sign_in_route} className="signin-btn btn btn-secondary">Login</a>
+                  </NavItem>
+                }
+                {logged_in &&
+                  <NavItem>
+                    <a href={sign_out_route} className="signout-btn btn btn-secondary">Logout</a>
+                  </NavItem>
+                }
+              </Nav>
+            </Collapse>
           </Navbar>
         </div>
       </>
