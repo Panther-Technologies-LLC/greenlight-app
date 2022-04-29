@@ -9,6 +9,7 @@ import PitchCardShow from "./pages/PitchCardShow";
 import PitchCardNew from "./pages/PitchCardNew";
 import PitchCardEdit from "./pages/PitchCardEdit";
 import ContactForm from "./pages/ContactForm";
+import AboutUs from "./pages/AboutUs";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -182,11 +183,14 @@ class App extends React.Component {
             {logged_in && (
               <Route
                 path="/contactform"
-                render={(props) => (
-                  <ContactForm
-                    {...this.props}
-                  />
-                )}
+                render={(props) => <ContactForm {...this.props} />}
+              />
+            )}
+
+            {logged_in && (
+              <Route
+                path="/aboutus"
+                render={(props) => <AboutUs {...this.props} />}
               />
             )}
           </Switch>
