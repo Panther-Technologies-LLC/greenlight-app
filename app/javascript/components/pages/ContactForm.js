@@ -42,6 +42,4 @@ class ContactForm extends Component {
   }
 }
 
-// ReactDOM.render(<Contact />, document.getElementById("root"));
-
 export default ContactForm;
