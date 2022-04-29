@@ -84,25 +84,19 @@ class Header extends Component {
                 </UncontrolledDropdown>
               }
               {!logged_in &&
-                <NavLink to={new_user_route} className="nav-link">
-                  <Button className="signin-btn">
-                    Sign-up
-                  </Button>
-                </NavLink>
+                <NavItem>
+                  <a href={new_user_route} className="signin-btn btn btn-secondary">Sign-Up</a>
+                </NavItem>
               }
               {!logged_in &&
-                <NavLink to={sign_in_route} className="nav-link">
-                  <Button className="signin-btn">
-                    Sign-in
-                  </Button>
-                </NavLink>
+                <NavItem>
+                  <a href={sign_in_route} className="signin-btn btn btn-secondary">Login</a>
+                </NavItem>
               }
               {logged_in &&
-                <NavLink to={sign_out_route} className="nav-link">
-                  <Button className="signout-btn">
-                    Sign-out
-                  </Button>
-                </NavLink>
+                <NavItem>
+                  <a href={sign_out_route} className="signout-btn btn btn-secondary">Logout</a>
+                </NavItem>
               }
             </Nav>
           </Navbar>
