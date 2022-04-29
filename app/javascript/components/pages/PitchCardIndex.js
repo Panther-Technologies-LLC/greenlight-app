@@ -8,7 +8,7 @@ class PitchCards extends Component {
       <>
         <div className="fullpagemargins">
           <div className="center-vertical-cards">
-              <h2 id="header">Pitch Cards</h2>
+              <h2 id="header">Support a Startup!</h2>
               <div className="center-horizontal">
               <br />
               <Col>
