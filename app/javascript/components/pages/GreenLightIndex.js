@@ -10,6 +10,7 @@ class GreenLightIndex extends Component {
         } else {
           this.setState({ submitted: "false" })
         }
+        <Redirect to="/greenlightindex"/>
       }
     render() {
         console.log(this.props.greenLights[0] && this.props.greenLights[0].pitchcard)
@@ -39,7 +40,7 @@ class GreenLightIndex extends Component {
                                             </Link>
                                             <br />
                                             <Link to={"/greenlightindex"}>
-                                                <Button onClick={() => this.handleDelete(`${greenlight.id}`)}>
+                                                <Button className="custom-btn" onClick={() => this.handleDelete(`${greenlight.id}`)}>
                                                     Delete this Greenlight
                                                 </Button>
                                             </Link>

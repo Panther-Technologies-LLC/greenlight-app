@@ -16,12 +16,9 @@ class Home extends Component {
           <div className="center-horizontal">
             <div className="center-vertical">
               <h1>Funding of the Future</h1>
-              <Link to="/users/sign_up">
-                <Button className="custom-btn">
-                  Sign Up
-                </Button>
-              </Link>
+                  <a href="/users/sign_up" className="custom-btn btn btn-secondary"> Sign Up</a>
               <h5>Connecting Investors and Startups one Greenlight at a time</h5>
+              
             </div>
           </div>
         </div>

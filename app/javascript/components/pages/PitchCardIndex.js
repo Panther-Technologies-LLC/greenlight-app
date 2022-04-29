@@ -11,6 +11,7 @@ class PitchCards extends Component {
       },
       submitted:false
     }
+
   }
 
   handleSubmit = (payload) => {
@@ -19,6 +20,10 @@ class PitchCards extends Component {
     this.setState({newGreenlight: newGreenlight})
     this.props.createGreenLight({...this.state.newGreenlight, user_profile_id: this.props.current_user.id})
     this.setState({submitted:true})
+    if (this.state.submitted = true){
+      window.confirm("You've Greenlit this Startup!")
+      window.location.replace("/greenlightindex");
+    }
   }
 
   render() {
@@ -47,7 +52,7 @@ class PitchCards extends Component {
                         </Button>
                       </Link>
                       <br />
-                      <Button className="custom-btn" onClick={ ()=> this.handleSubmit(`${pitchCard.id}` )}>Greenlight!</Button>
+                        <Button className="custom-btn btn btn-secondary" onClick={ ()=> this.handleSubmit(`${pitchCard.id}` )}>Greenlight!</Button>
                     </Card>
                   )
                 })}

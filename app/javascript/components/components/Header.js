@@ -80,6 +80,11 @@ class Header extends Component {
                       <DropdownItem>
                         <a href="/greenlightindex" className="nav-link">Greenlight List</a>
                       </DropdownItem>
+                      <DropdownItem>
+                      {logged_in &&
+                        <a href={sign_out_route} className="nav-link">Logout</a>
+                      }
+                      </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 }
@@ -91,11 +96,6 @@ class Header extends Component {
                 {!logged_in &&
                   <NavItem>
                     <a href={sign_in_route} className="signin-btn btn btn-secondary">Login</a>
-                  </NavItem>
-                }
-                {logged_in &&
-                  <NavItem>
-                    <a href={sign_out_route} className="signout-btn btn btn-secondary">Logout</a>
                   </NavItem>
                 }
               </Nav>

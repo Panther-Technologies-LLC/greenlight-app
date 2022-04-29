@@ -133,6 +133,7 @@ class App extends React.Component {
       new_user_route,
       sign_in_route,
       sign_out_route,
+      user_profile
     } = this.props;
 
     return (
