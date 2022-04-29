@@ -5,6 +5,7 @@ import { Formik, Field, Form } from "formik";
 class ContactForm extends Component {
   render() {
     return (
+      <div styleName="fullpagemargins">
       <div className="ContactForm">
         <h1>Contact Company</h1>
         <Formik
@@ -35,6 +36,7 @@ class ContactForm extends Component {
             <button type="submit">Submit</button>
           </Form>
         </Formik>
+      </div>
       </div>
     );
   }
