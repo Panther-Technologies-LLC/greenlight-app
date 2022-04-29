@@ -14,7 +14,7 @@ describe("When PitchCardIndex renders", () => {
     logo:"hello",
     pitch:"test"
   }]
-  it("displays a heading", () => {
+  it("displays the pitch cards and heading", () => {
     const wrapper = shallow(<PitchCardIndex pitchCards={pitchCards}/>)
     const test = wrapper.find("#header").text()
     expect(test).toEqual("Pitch Cards")

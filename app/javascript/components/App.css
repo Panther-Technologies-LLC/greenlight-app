@@ -30,7 +30,7 @@ display: flex;
 flex-wrap: wrap;
 }
 
-#fullpagemargins {
+.fullpagemargins {
 margin-top: 30px;
 margin-left: 30px;
 margin-right: 30px;
@@ -216,13 +216,6 @@ body.bgimage {
     background-position: center;
 }
 
-.full-page {
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-bottom: 50px;
-
-  }
 .center-vertical{
     display: flex;
     flex-direction: column; 
@@ -239,4 +232,75 @@ body.bgimage {
     flex-direction: row; 
     justify-content: center;
     align-items: center;
+}
+
+.center-vertical-cards{
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  top: 40%;
+}
+
+/*-----------------Buttons--------------*/
+
+.custom-btn {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+/*-----------------Pitch Card Index----------------*/
+.index-image {
+  height: 250px;
+  object-fit: scale-down;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.index-card {
+  width: 500px;
+  text-align: center;
+}
+
+.pitch-button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  outline: 0;
+  background: #4CAF50;
+  width: 60%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 18px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+#card-title {
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
 }
