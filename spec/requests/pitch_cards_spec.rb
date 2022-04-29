@@ -19,13 +19,20 @@ RSpec.describe "PitchCards", type: :request do
   end
   describe "POST /create" do
     it "creates a PitchCard" do
-      user_profile = UserProfile.create(
-        is_investor: true,
-        first_name: "Mark",
-        last_name:"whatever"
+      user = User.create(
+        email:"asdf@asdf.com",
+        password:"123456",
+        password_confirmation:"123456"
+      )
+      user = User.first
+      user_profile = user.create_user_profile(
+          is_investor: true,
+          first_name: "Athen",
+          last_name:"Park"
       )
       pitch_card_params = {
         pitch_card: {
+          user_profile: user_profile,
           company_email:"facebook@gmail.com",
           company_name:"Facebook",
           logo:"https://i.imgur.com/F4uNw2x.png",
@@ -35,7 +42,8 @@ RSpec.describe "PitchCards", type: :request do
         }
       }
 
-      post '/pitch_cards', params: pitch_card_params
+      sign_in user
+      post "/pitch_cards", params: pitch_card_params
       expect(response).to have_http_status(200)
 
       pitch_card = PitchCard.first
@@ -49,6 +57,12 @@ RSpec.describe "PitchCards", type: :request do
   end
   describe "UPDATE /patch" do
     it "updates a pitch card" do
+      user = User.create(
+        email:"asdf@asdf.com",
+        password:"123456",
+        password_confirmation:"123456"
+      )
+      user = User.first
       user_profile = UserProfile.create(
         is_investor: true,
         first_name: "Mark",
@@ -75,10 +89,12 @@ RSpec.describe "PitchCards", type: :request do
           industry: "Technology"
         }
       }
+
+      sign_in user
       patch "/pitch_cards/#{pitch_card_facebook.id}", params: pitch_card_params
       pitch_card_mystery = PitchCard.find(pitch_card_facebook.id)
       expect(response).to have_http_status(200)
-      expect(pitch_card_mystery.age).to eq "$15,000,000"
+      expect(pitch_card_mystery.funding).to eq "$15,000,000"
     end
   end
   describe "DELETE /destroy" do

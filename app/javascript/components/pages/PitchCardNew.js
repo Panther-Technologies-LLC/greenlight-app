@@ -104,8 +104,8 @@ handleSubmit = () => {
                   />
                 </FormGroup>
 
-                <Button name="submit" className="button" onClick={this.handleSubmit}> 
-                  Create New Pitch Card 
+                <Button name="submit" className="button" onClick={this.handleSubmit}>
+                  Create New Pitch Card
                 </Button>
                     <p className="message">
                     <a href="/">

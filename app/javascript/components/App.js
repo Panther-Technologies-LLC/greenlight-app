@@ -125,7 +125,7 @@ class App extends React.Component {
 
               {logged_in &&
                 <Route path="/pitchcardnew"
-                render={(props) => <PitchCardNew {...this.props} createPitchCard={this.createPitchCard} />}
+                render={(props) => <PitchCardNew {...this.props} createPitchCard={this.createPitchCard}/>}
                 />
               }
 

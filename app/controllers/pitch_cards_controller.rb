@@ -11,7 +11,6 @@ class PitchCardsController < ApplicationController
 
     def create
     pitch_card = PitchCard.create({**strong_pitch_card_params, user_profile_id: current_user.user_profile.id })
-    p pitch_card
       if pitch_card.valid?
         render json: pitch_card
       else
@@ -21,8 +20,7 @@ class PitchCardsController < ApplicationController
 
     def update
       pitch_card = PitchCard.find(params[:id])
-      pitch_card.update({**strong_pitch_card_params, user_profile_id: current_user.user_profile.id})
-      debugger
+      pitch_card.update({**strong_pitch_card_params, user_profile_id: current_user.user_profile.id })
       if pitch_card.valid?
         render json: pitch_card
       else
