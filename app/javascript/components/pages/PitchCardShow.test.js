@@ -15,9 +15,6 @@ describe("When PitchCardShow renders", () => {
     pitch:"test"
   }
   it("displays a pitch card", () => {
-    const wrapper = shallow(<PitchCardShow pitchCard={pitchCard}/>)
-    const test = wrapper.find("#header").text()
-    expect(test).toEqual("Pitch Card Show")
     expect(wrapper.contains(pitchCard.company_name)).toBeTruthy()
     expect(wrapper.contains(pitchCard.funding)).toBeTruthy()
     expect(wrapper.contains(pitchCard.industry)).toBeTruthy()

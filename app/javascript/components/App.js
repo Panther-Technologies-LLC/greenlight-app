@@ -179,7 +179,6 @@ class App extends React.Component {
                 )}
               />
             )}
-
             {logged_in && (
               <Route
                 path="/contactform"
