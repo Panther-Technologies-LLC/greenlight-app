@@ -33,7 +33,7 @@ handleSubmit = () => {
 
     render() {
         return (
-          <div className="login-page">
+          <div className="fullpagemargins">
             <div className="PitchCardNew">
             <Form>
               <h2>Update Your Pitch Card</h2>
