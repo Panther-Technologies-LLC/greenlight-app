@@ -18,7 +18,7 @@ class PitchCards extends Component {
     let { newGreenlight } = this.state
     newGreenlight.pitch_card_id = payload
     this.setState({newGreenlight: newGreenlight})
-    this.props.createGreenLight({...this.state.newGreenlight, user_profile_id: this.props.current_user.id})
+    this.props.createGreenLight({...this.state.newGreenlight, user_profile_id: this.props.current_user_profile.id})
     this.setState({submitted:true})
     if (this.state.submitted = true){
       window.confirm("You've Greenlit this Startup!")
