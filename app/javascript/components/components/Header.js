@@ -17,6 +17,18 @@ import {
 import { NavLink } from 'react-router-dom'
 
 class Header extends Component {
+  constructor(props){
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     const {
       logged_in,
@@ -37,8 +49,8 @@ class Header extends Component {
             <NavbarBrand id="nav" href="/" >
               <i className="fa-solid fa-lightbulb green"></i> Greenlight
             </NavbarBrand>
-            <NavbarToggler onClick={function noRefCheck() { }} />
-            <Collapse navbar>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse navbar isOpen={this.state.isOpen}>
               <Nav
                 className="me-auto vert-center"
                 navbar
