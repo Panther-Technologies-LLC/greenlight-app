@@ -11,6 +11,7 @@ import PitchCardEdit from "./pages/PitchCardEdit";
 import ContactForm from "./pages/ContactForm";
 import GreenLightIndex from "./pages/GreenLightIndex";
 import NotFound from "./pages/NotFound";
+import AboutUs from "./pages/AboutUs";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -235,6 +236,10 @@ class App extends React.Component {
                 )}
               />
             )}
+            <Route
+              path="/aboutus"
+              render={(props) => <AboutUs {...this.props} />}
+            />
             <Route component={NotFound} />
           </Switch>
           <Footer {...this.props} />
