@@ -10,6 +10,7 @@ import PitchCardNew from "./pages/PitchCardNew";
 import PitchCardEdit from "./pages/PitchCardEdit";
 import ContactForm from "./pages/ContactForm";
 import GreenLightIndex from "./pages/GreenLightIndex";
+import NotFound from "./pages/NotFound";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -96,35 +97,35 @@ class App extends React.Component {
 
   readGreenLights = () => {
     fetch("/greenlights")
-    .then(response => response.json())
-    .then(payload => this.setState({greenLights: payload}))
-    .catch(errors => console.log("Greenlight read errors:", errors))
-  }
+      .then((response) => response.json())
+      .then((payload) => this.setState({ greenLights: payload }))
+      .catch((errors) => console.log("Greenlight read errors:", errors));
+  };
 
   createGreenLight = (newGreenLight) => {
     fetch("/greenlights", {
-    body: JSON.stringify(newGreenLight),
-    headers: {
-      "Content-Type": "application/json"
-    },
-    method: "POST"
-  })
-  .then(response => response.json())
-  .then(payload => this.readGreenLights())
-  .catch(errors => console.log("Greenlight create errors:", errors))
-  }
+      body: JSON.stringify(newGreenLight),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    })
+      .then((response) => response.json())
+      .then((payload) => this.readGreenLights())
+      .catch((errors) => console.log("Greenlight create errors:", errors));
+  };
 
   deleteGreenLight = (id) => {
     fetch(`/greenlights/${id}`, {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      method: "DELETE"
+      method: "DELETE",
     })
-    .then(response => response.json())
-    .then(payload => this.readGreenLights())
-    .catch(errors => console.log("delete errors:", errors))
-  }
+      .then((response) => response.json())
+      .then((payload) => this.readGreenLights())
+      .catch((errors) => console.log("delete errors:", errors));
+  };
 
   render() {
     const {
@@ -133,7 +134,7 @@ class App extends React.Component {
       new_user_route,
       sign_in_route,
       sign_out_route,
-      current_user_profile
+      current_user_profile,
     } = this.props;
     return (
       <>
@@ -219,16 +220,22 @@ class App extends React.Component {
             {logged_in && (
               <Route
                 path="/contactform"
+                render={(props) => <ContactForm {...this.props} />}
+              />
+            )}
+            {logged_in && (
+              <Route
+                path="/greenlightindex"
                 render={(props) => (
-                  <ContactForm
+                  <GreenLightIndex
                     {...this.props}
+                    greenLights={this.state.greenLights}
+                    deleteGreenLight={this.deleteGreenLight}
                   />
                 )}
               />
             )}
-            {logged_in &&
-              <Route path="/greenlightindex" render={(props) => <GreenLightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenLight={this.deleteGreenLight} />} />
-            }
+            <Route component={NotFound} />
           </Switch>
           <Footer {...this.props} />
         </Router>
