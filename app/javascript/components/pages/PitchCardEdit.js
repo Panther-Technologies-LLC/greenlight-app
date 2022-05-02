@@ -19,13 +19,6 @@ class PitchCardEdit extends Component {
   }
 }
 
-// componentDidMount() {
-//   if (this.props.pitchCard.length == 1){
-//     this.setState({newPitchCard: this.props.pitchCard})
-//   }
-// }
-
-
 handleChange = (e) => {
   let { newPitchCard } = this.state
   newPitchCard[e.target.name] = e.target.value
