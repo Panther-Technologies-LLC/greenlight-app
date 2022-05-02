@@ -22,7 +22,11 @@ pitch_card_1 = [
         industry: "Technology"
     }
 ]
-user = User.find 1
+user = User.create(
+  email:"asdf@asdf.com",
+  password:"123456",
+  password_confirmation:"123456"
+)
 user_profile_1 = user.create_user_profile(
     is_investor: true,
     first_name: "Athen",

@@ -9,7 +9,7 @@ class Footer extends Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-12 col-md-6">
-                <h6>About</h6>
+                <h6 id="about">About</h6>
                 <p className="text-justify">Scanfcode.com <i>FUNDING OF THE FUTURE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help </p>
               </div>
 
@@ -44,7 +44,7 @@ class Footer extends Component {
                   <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
                   <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
                   <li><a className="dribbble" href="#"><i className="fa fa-dribbble"></i></a></li>
-                  <li><a className="linkedin" href="#"><i className="fa fa-linkedin"></i></a></li>   
+                  <li><a className="linkedin" href="#"><i className="fa fa-linkedin"></i></a></li>
                 </ul>
               </div>
             </div>
