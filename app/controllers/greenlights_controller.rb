@@ -1,7 +1,10 @@
 class GreenlightsController < ApplicationController
   def index
-      greenlights = Greenlight.all
-      render json: greenlights
+    greenlights = current_user.user_profile.greenlights
+    greenlight_list= greenlights.map do |greenlight| 
+      greenlight.attributes.merge(pitchcard: greenlight.pitch_card)
+    end
+    render json: greenlight_list
   end
 
   def create

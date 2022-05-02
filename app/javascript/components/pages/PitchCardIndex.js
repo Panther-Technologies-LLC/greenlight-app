@@ -3,6 +3,29 @@ import { Card, CardTitle, Col, CardImg, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
 class PitchCards extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      newGreenlight: {
+        pitch_card_id: "",
+      },
+      submitted:false
+    }
+
+  }
+
+  handleSubmit = (payload) => {
+    let { newGreenlight } = this.state
+    newGreenlight.pitch_card_id = payload
+    this.setState({newGreenlight: newGreenlight})
+    this.props.createGreenLight({...this.state.newGreenlight, user_profile_id: this.props.current_user_profile.id})
+    this.setState({submitted:true})
+    if (this.state.submitted = true){
+      window.confirm("You've Greenlit this Startup!")
+      window.location.replace("/greenlightindex");
+    }
+  }
+
   render() {
     return(
       <>
@@ -28,6 +51,8 @@ class PitchCards extends Component {
                           View Pitch
                         </Button>
                       </Link>
+                      <br />
+                        <Button className="custom-btn btn btn-secondary" onClick={ ()=> this.handleSubmit(`${pitchCard.id}` )}>Greenlight!</Button>
                     </Card>
                   )
                 })}

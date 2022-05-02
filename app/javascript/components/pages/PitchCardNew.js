@@ -32,9 +32,9 @@ handleSubmit = () => {
 
     render() {
         return (
-          <div className="form-page">
+          <div className="form-page-pitchcard">
           <h2>Create a PitchCard!</h2>
-            <div className="form">
+            <div className="form-pitchcard">
               <div className="PitchCardNew">
               <Form>
 
@@ -72,17 +72,6 @@ handleSubmit = () => {
                 </FormGroup>
 
                 <FormGroup>
-                  <Label for="pitch">Company Pitch</Label>
-                  <Input
-                    className="input"
-                    name="pitch"
-                    text="text"
-                    onChange={this.handleChange}
-                    value={this.state.newPitchCard.pitch}
-                  />
-                </FormGroup>
-
-                <FormGroup>
                   <Label for="funding">Funding Desired</Label>
                   <Input
                     className="input"
@@ -104,8 +93,20 @@ handleSubmit = () => {
                   />
                 </FormGroup>
 
-                <Button name="submit" className="button" onClick={this.handleSubmit}>
-                  Create New Pitch Card
+                <FormGroup>
+                  <Label for="pitch">Company Pitch</Label>
+                  <Input
+                    className="textarea"
+                    type="textarea"
+                    name="pitch"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.pitch}
+                  />
+                </FormGroup>
+
+                <Button name="submit" className="button btn btn-secondary" onClick={this.handleSubmit}> 
+                  Create New Pitch Card 
                 </Button>
                     <p className="message">
                     <a href="/">

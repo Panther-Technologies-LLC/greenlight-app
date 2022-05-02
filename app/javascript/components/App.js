@@ -9,6 +9,7 @@ import PitchCardShow from "./pages/PitchCardShow";
 import PitchCardNew from "./pages/PitchCardNew";
 import PitchCardEdit from "./pages/PitchCardEdit";
 import ContactForm from "./pages/ContactForm";
+import GreenLightIndex from "./pages/GreenLightIndex";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -18,12 +19,14 @@ class App extends React.Component {
     this.state = {
       pitchCards: [],
       userProfiles: [],
+      greenLights: [],
     };
   }
 
   componentDidMount() {
     this.readPitchCard();
     this.readUserProfile();
+    this.readGreenLights();
   }
 
   readUserProfile = () => {
@@ -88,8 +91,40 @@ class App extends React.Component {
     })
       .then((response) => response.json())
       .then((payload) => this.readPitchCard())
-      .catch((errors) => console.log("delete errors:", errors));
+      .catch((errors) => console.log("PitchCard delete errors:", errors));
   };
+
+  readGreenLights = () => {
+    fetch("/greenlights")
+    .then(response => response.json())
+    .then(payload => this.setState({greenLights: payload}))
+    .catch(errors => console.log("Greenlight read errors:", errors))
+  }
+
+  createGreenLight = (newGreenLight) => {
+    fetch("/greenlights", {
+    body: JSON.stringify(newGreenLight),
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method: "POST"
+  })
+  .then(response => response.json())
+  .then(payload => this.readGreenLights())
+  .catch(errors => console.log("Greenlight create errors:", errors))
+  }
+
+  deleteGreenLight = (id) => {
+    fetch(`/greenlights/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(payload => this.readGreenLights())
+    .catch(errors => console.log("delete errors:", errors))
+  }
 
   render() {
     const {
@@ -98,8 +133,8 @@ class App extends React.Component {
       new_user_route,
       sign_in_route,
       sign_out_route,
+      current_user_profile
     } = this.props;
-
     return (
       <>
         <Router>
@@ -113,6 +148,8 @@ class App extends React.Component {
                   <PitchCardIndex
                     {...this.props}
                     pitchCards={this.state.pitchCards}
+                    greenLights={this.state.greenLights}
+                    createGreenLight={this.createGreenLight}
                   />
                 )}
               />
@@ -159,6 +196,7 @@ class App extends React.Component {
                   return (
                     <PitchCardEdit
                       {...this.props}
+                      deletePitchCard={this.deletePitchCard}
                       updatePitchCard={this.updatePitchCard}
                       pitchCard={pitchCard}
                     />
@@ -188,6 +226,9 @@ class App extends React.Component {
                 )}
               />
             )}
+            {logged_in &&
+              <Route path="/greenlightindex" render={(props) => <GreenLightIndex {...this.props}  greenLights={this.state.greenLights} deleteGreenLight={this.deleteGreenLight} />} />
+            }
           </Switch>
           <Footer {...this.props} />
         </Router>

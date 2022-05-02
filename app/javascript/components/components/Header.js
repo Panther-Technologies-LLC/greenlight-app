@@ -17,6 +17,18 @@ import {
 import { NavLink } from 'react-router-dom'
 
 class Header extends Component {
+  constructor(props){
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     const {
       logged_in,
@@ -37,8 +49,8 @@ class Header extends Component {
             <NavbarBrand id="nav" href="/" >
               <i className="fa-solid fa-lightbulb green"></i> Greenlight
             </NavbarBrand>
-            <NavbarToggler onClick={function noRefCheck() { }} />
-            <Collapse navbar>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse navbar isOpen={this.state.isOpen}>
               <Nav
                 className="me-auto vert-center"
                 navbar
@@ -80,6 +92,11 @@ class Header extends Component {
                       <DropdownItem>
                         <a href="/greenlightindex" className="nav-link">Greenlight List</a>
                       </DropdownItem>
+                      <DropdownItem>
+                      {logged_in &&
+                        <a href={sign_out_route} className="nav-link">Logout</a>
+                      }
+                      </DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 }
@@ -91,11 +108,6 @@ class Header extends Component {
                 {!logged_in &&
                   <NavItem>
                     <a href={sign_in_route} className="signin-btn btn btn-secondary">Login</a>
-                  </NavItem>
-                }
-                {logged_in &&
-                  <NavItem>
-                    <a href={sign_out_route} className="signout-btn btn btn-secondary">Logout</a>
                   </NavItem>
                 }
               </Nav>

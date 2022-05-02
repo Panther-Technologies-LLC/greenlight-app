@@ -84,20 +84,6 @@ margin-right: 30px;
 margin-bottom: 50px;
 }
 
-#index-image {
-height: 400px;
-object-fit: cover;
-object-position: 90% 0;
-}
-
-#form-new {
-width: 700px;
-}
-
-#form-edit {
-width: 700px;
-}
-
 h1 {
     font-family: 'Inter', sans-serif;
     font-weight: "800";
@@ -263,6 +249,10 @@ body.bgimage {
     background-position: center;
 }
 
+.white-bg {
+  background-color: white;
+}
+
 .center-vertical{
     display: flex;
     flex-direction: column; 
@@ -297,7 +287,7 @@ body.bgimage {
   text-transform: uppercase;
   outline: 0;
   background: #4CAF50;
-  width: 100%;
+  width: 30%;
   border: 0;
   padding: 15px;
   color: #FFFFFF;
