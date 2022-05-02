@@ -1,7 +1,7 @@
 class GreenlightsController < ApplicationController
   def index
     greenlights = current_user.user_profile.greenlights
-    greenlight_list= greenlights.map do |greenlight| 
+    greenlight_list= greenlights.map do |greenlight|
       greenlight.attributes.merge(pitchcard: greenlight.pitch_card)
     end
     render json: greenlight_list
@@ -9,9 +9,13 @@ class GreenlightsController < ApplicationController
 
   def create
   greenlight = Greenlight.create(strong_greenlight_params)
-    if greenlight.valid?
+    if greenlight.valid? && greenlight.save
+      GreenlightMailer.new_greenlight_email.deliver_later
+      flash[:success] = "Thank you for your interest in this startup! We'll contact you soon!"
+      redirect_to greenlight_index_path
       render json: greenlight
     else
+      flash.now[:error] = "Please check the form and resubmit."
       render json: greenlight.errors, status:422
     end
   end
