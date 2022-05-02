@@ -22,7 +22,7 @@ class Footer extends Component {
               <div className="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul className="footer-links">
-                  <li><a href="#">About Us</a></li>
+                  <li><a href="/aboutus">About Us</a></li>
                   <li><a href="#">Credits</a></li>
                   <li><a href="#">Privacy Policy</a></li>
                 </ul>
