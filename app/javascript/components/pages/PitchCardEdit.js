@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 class PitchCardEdit extends Component {
   constructor(props){
   super(props)
-  this.state = {
+  this.state = { 
     newPitchCard: {
       company_name: "",
       company_email: "",
@@ -18,6 +18,12 @@ class PitchCardEdit extends Component {
     submitted:false
   }
 }
+
+// componentDidMount() {
+//   if (this.props.pitchCard.length == 1){
+//     this.setState({newPitchCard: this.props.pitchCard})
+//   }
+// }
 
 
 handleChange = (e) => {
@@ -31,77 +37,105 @@ handleSubmit = () => {
   this.setState({submitted:true})
 }
 
+handleDelete = () => {
+  if (window.confirm("Are you sure you want to delete this pitch card?") === true) {
+    this.props.deletePitchCard(this.props.pitchCard.id)
+    this.setState({ submitted: "true" })
+  } else {
+    this.setState({ submitted: "false" })
+  }
+}
+
     render() {
+      console.log(this.props.pitchCard)
         return (
-          <div className="fullpagemargins">
-            <div className="PitchCardNew">
-            <Form>
-              <h2>Update Your Pitch Card</h2>
-              <FormGroup>
-                <Label for="company_name">Company Name</Label>
-                <Input
-                  className="input"
-                  name="company_name"
-                  text="text"
-                  onChange={this.handleChange}
-                  value={this.state.newPitchCard.company_name}
-                />
-              </FormGroup>
+          <div className="form-page-pitchcard">
+          <h2>Update Your Pitch Card</h2>
+            <div className="form-pitchcard">
+              <div className="PitchCardNew">
+              <Form>   
+                <FormGroup>
+                  <Label for="company_name">Company Name</Label>
+                  <Input
+                    className="input"
+                    name="company_name"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.company_name}
+                  />
+                </FormGroup>
 
-              <FormGroup>
-                <Label for="company_email">Company Email</Label>
-                <Input
-                  name="company_email"
-                  text="text"
-                  onChange={this.handleChange}
-                  value={this.state.newPitchCard.company_email}
-                />
-              </FormGroup>
+                <FormGroup>
+                  <Label for="company_email">Company Email</Label>
+                  <Input
+                    className="input"
+                    name="company_email"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.company_email}
+                  />
+                </FormGroup>
 
-              <FormGroup>
-                <Label for="logo">Company Logo</Label>
-                <Input
-                  name="logo"
-                  text="url"
-                  onChange={this.handleChange}
-                  value={this.state.newPitchCard.logo}
-                />
-              </FormGroup>
+                <FormGroup>
+                  <Label for="logo">Company Logo</Label>
+                  <Input
+                    className="input"
+                    name="logo"
+                    text="url"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.logo}
+                  />
+                </FormGroup>
 
-              <FormGroup>
-                <Label for="pitch">Company Pitch</Label>
-                <Input
-                  name="pitch"
-                  text="text"
-                  onChange={this.handleChange}
-                  value={this.state.newPitchCard.pitch}
-                />
-              </FormGroup>
+                <FormGroup>
+                  <Label for="funding">Funding Desired</Label>
+                  <Input
+                    className="input"
+                    name="funding"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.funding}
+                  />
+                </FormGroup>
 
-              <FormGroup>
-                <Label for="funding">Funding Desired</Label>
-                <Input
-                  name="funding"
-                  text="text"
-                  onChange={this.handleChange}
-                  value={this.state.newPitchCard.funding}
-                />
-              </FormGroup>
+                <FormGroup>
+                  <Label for="industry">Industry</Label>
+                  <Input
+                    className="input"
+                    name="industry"
+                    text="text"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.industry}
+                  />
+                </FormGroup>
 
-              <FormGroup>
-                <Label for="industry">Industry</Label>
-                <Input
-                  name="industry"
-                  text="text"
-                  onChange={this.handleChange}
-                  value={this.state.newPitchCard.industry}
-                />
-              </FormGroup>
+                <FormGroup>
+                  <Label for="pitch">Company Pitch</Label>
+                  <Input
+                    className="textarea"
+                    name="pitch"
+                    text="text"
+                    type="textarea"
+                    onChange={this.handleChange}
+                    value={this.state.newPitchCard.pitch}
+                  />
+                </FormGroup>
 
-              <Button name="submit" onClick={this.handleSubmit}> Update Pitch Card </Button>
-              <p><NavLink to={`/`}><Button>Go Back to Homepage</Button></NavLink></p>
-              {this.state.submitted && <Redirect to={`/pitchcardshow/${this.props.pitchCard.id}`} />}
-            </Form>
+                <Button className="button btn btn-secondary" name="submit" onClick={this.handleSubmit}> Update Pitch Card </Button>
+                <br />
+                <Link to={"/pitchcards"}>
+                  <Button onClick={this.handleDelete}>
+                    Delete this Pitch Card
+                  </Button>
+                </Link>
+                <p className="message">
+                    <a href="/">
+                      Go Back to Homepage
+                    </a>
+                    </p>
+                {this.state.submitted && <Redirect to={`/pitchcardshow/${this.props.pitchCard.id}`} />}
+              </Form>
+            </div>
           </div>
         </div>
         )

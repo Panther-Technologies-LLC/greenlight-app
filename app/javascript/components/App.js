@@ -196,6 +196,7 @@ class App extends React.Component {
                   return (
                     <PitchCardEdit
                       {...this.props}
+                      deletePitchCard={this.deletePitchCard}
                       updatePitchCard={this.updatePitchCard}
                       pitchCard={pitchCard}
                     />

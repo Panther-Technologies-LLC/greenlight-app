@@ -1,11 +1,14 @@
-<%= react_component 'App', {
+<% user_options = {
   logged_in: user_signed_in?,
   current_user: current_user,
   new_user_route: new_user_registration_path,
   sign_in_route: new_user_session_path,
-  sign_out_route: destroy_user_session_path,
-  current_user_profile: current_user.user_profile
+  sign_out_route: destroy_user_session_path
 } %>
+<% if current_user != nil %>
+  <% user_options[:current_user_profile] = current_user.user_profile %>
+<% end %>
+<%= react_component 'App', user_options %>
 <script src="https://kit.fontawesome.com/137a89e904.js" crossorigin="anonymous">
 </script>
 <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;800&display=swap'); </style>

@@ -22,11 +22,26 @@
   padding: 8% 0 0;
   margin: auto;
 }
+.form-page-pitchcard {
+  width: 700px;
+  padding: 8% 0 0;
+  margin: auto;
+}
 .form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
   max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form-pitchcard {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 700px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
@@ -42,6 +57,43 @@
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+}
+.form-pitchcard .input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form-pitchcard .textarea {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  height: 300px;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form-pitchcard .button {
+  font-family: "Roboto", sans-serif !important;
+  text-transform: uppercase !important;
+  outline: 0 !important;
+  background: #4CAF50 !important;
+  width: 100% !important;
+  border: 0 !important;
+  padding: 15px !important;
+  color: #FFFFFF !important;
+  font-size: 14px !important;
+  -webkit-transition: all 0.3 ease !important;
+  transition: all 0.3 ease !important;
+  cursor: pointer !important;
 }
 .form .button {
   font-family: "Roboto", sans-serif !important;
@@ -60,6 +112,9 @@
 .form .button:hover,.form .button:active,.form .button:focus {
   background: #43A047;
 }
+.form-pitchcard .button:hover,.form-pitchcard .button:active,.form-pitchcard .button:focus {
+  background: black;
+}
 .form message {
   margin: 15px 0 0;
   color: #b3b3b3;
@@ -74,6 +129,22 @@
     color: #43A047;
     text-decoration: none;
   }
+.form-pitchcard message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 18px;
+}
+  
+.form-pitchcard .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+.form-pitchcard .message a:hover {
+    color: #43A047;
+    text-decoration: none;
+  }
+  
+  
 .container .formpage {
   position: relative;
   z-index: 1;
