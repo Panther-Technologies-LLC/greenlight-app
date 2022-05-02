@@ -2,9 +2,7 @@
 class GreenlightMailerPreview < ActionMailer::Preview
   def new_greenlight_email
     # Set up a temporary order for the preview
-    #greenlight_email = Greenlight.new(investor_email: "joe@gmail.com", message: "I want to place an order!")
 
-    # GreenlightMailer.with(greenlight: greenlight_email).new_greenlight_email
     GreenlightMailer.new_greenlight_email
   end
 end

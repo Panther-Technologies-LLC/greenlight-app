@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   get '*path', to: 'home#index', constraints: ->(request){ request.format.html? }
+  get '/contact', :to => 'greenlights#create_email'
   root 'home#index'
 end

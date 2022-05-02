@@ -12,6 +12,7 @@ import ContactForm from "./pages/ContactForm";
 import GreenLightIndex from "./pages/GreenLightIndex";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
+import { Button } from 'reactstrap';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -128,6 +129,18 @@ class App extends React.Component {
       .catch((errors) => console.log("delete errors:", errors));
   };
 
+  createEmail = () => {
+    fetch("/contact", {
+      body: JSON.stringify(),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .catch((errors) => console.log("Email create errors:", errors));
+  };
+
   render() {
     const {
       logged_in,
@@ -242,6 +255,7 @@ class App extends React.Component {
             />
             <Route component={NotFound} />
           </Switch>
+          <Button onClick={this.createEmail}>Email</Button>
           <Footer {...this.props} />
         </Router>
       </>
