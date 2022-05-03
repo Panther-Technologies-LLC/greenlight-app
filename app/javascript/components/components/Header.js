@@ -61,7 +61,7 @@ class Header extends Component {
                     <NavLink to="/pitchcards" className="nav-link">Browse Startups</NavLink>
                   </NavItem>
                 }
-                {logged_in && (current_user_profile.is_investor == true) && 
+                {logged_in && investor && 
                   <NavItem>
                     <NavLink to="/greenlightindex" className="nav-link">My Greenlights</NavLink>
                   </NavItem>
@@ -93,7 +93,7 @@ class Header extends Component {
                       <DropdownItem>
                         <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
                       </DropdownItem>
-                      {logged_in && (current_user_profile.is_investor === false) &&
+                      {logged_in && investor &&
                       <DropdownItem>
                         <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
                       </DropdownItem>

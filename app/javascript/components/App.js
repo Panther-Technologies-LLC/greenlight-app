@@ -22,14 +22,23 @@ class App extends React.Component {
       pitchCards: [],
       userProfiles: [],
       greenLights: [],
+      investor: false,
     };
   }
 
   componentDidMount() {
+    this.investorChecker();
     this.readPitchCard();
     this.readUserProfile();
     this.readGreenLights();
   }
+
+  investorChecker = () => {
+    if(this.props.current_user_profile !== undefined && this.props.current_user_profile !== null ){
+    investor = (this.props.current_user_profile.is_investor == true
+      )}
+    this.setState({investor: true}), function
+    }
 
   readUserProfile = () => {
     fetch("/user_profiles")
@@ -175,7 +184,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (current_user_profile.is_investor === false) && (
+            {logged_in && this.investor && (
               <Route
                 path="/pitchcardnew"
                 render={(props) => (
@@ -187,7 +196,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (current_user_profile.is_investor == true) && (
+            {logged_in && this.investor && (
               <Route
                 path="/pitchcardedit/:id"
                 render={(props) => {
@@ -218,13 +227,13 @@ class App extends React.Component {
                 )}
               />
             )}
-            {logged_in && (current_user_profile.is_investor == true) && (
+            {logged_in && this.investor  && (
               <Route
                 path="/contactform"
                 render={(props) => <ContactForm {...this.props} />}
               />
             )}
-            {logged_in && (current_user_profile.is_investor == true) && (
+            {logged_in && this.investor && (
               <Route
                 path="/greenlightindex"
                 render={(props) => (
