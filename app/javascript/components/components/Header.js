@@ -94,7 +94,7 @@ class Header extends Component {
                       <DropdownItem>
                         <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
                       </DropdownItem>
-                      {logged_in &&
+                      {logged_in &&  (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == false) && 
                       <DropdownItem>
                         <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
                       </DropdownItem>

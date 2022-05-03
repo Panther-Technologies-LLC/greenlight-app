@@ -183,7 +183,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (
+            {logged_in && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == false) && (
               <Route
                 path="/pitchcardnew"
                 render={(props) => (
