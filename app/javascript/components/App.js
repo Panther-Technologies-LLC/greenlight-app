@@ -27,18 +27,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.investorChecker();
     this.readPitchCard();
     this.readUserProfile();
     this.readGreenLights();
   }
 
-  investorChecker = () => {
-    if(this.props.current_user_profile !== undefined && this.props.current_user_profile !== null ){
-    investor = (this.props.current_user_profile.is_investor == true
-      )}
-    this.setState({investor: true}), function
-    }
+  // investorChecker = () => {
+  //   if(this.props.current_user_profile !== undefined && this.props.current_user_profile !== null ){
+  //   let investor = (this.props.current_user_profile.is_investor == true
+  //     )}
 
   readUserProfile = () => {
     fetch("/user_profiles")
@@ -146,13 +143,15 @@ class App extends React.Component {
       sign_out_route,
       current_user_profile,
     } = this.props;
+
     return (
       <>
         <Router>
-          <Header {...this.props} />
+          <Header {...this.props}
+          />
           <Switch>
             <Route exact path="/" component={Home} {...this.props} />
-            {logged_in && (
+            {logged_in && ( 
               <Route
                 path="/pitchcards"
                 render={(props) => (
@@ -165,7 +164,7 @@ class App extends React.Component {
                 )}
               />
             )}
-            {logged_in && (
+            {logged_in && (    
               <Route
                 path="/pitchcardshow/:id"
                 render={(props) => {
@@ -184,7 +183,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && this.investor && (
+            {logged_in && (
               <Route
                 path="/pitchcardnew"
                 render={(props) => (
@@ -196,7 +195,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && this.investor && (
+            {logged_in && (
               <Route
                 path="/pitchcardedit/:id"
                 render={(props) => {
@@ -227,13 +226,13 @@ class App extends React.Component {
                 )}
               />
             )}
-            {logged_in && this.investor  && (
+            {logged_in && (
               <Route
                 path="/contactform"
                 render={(props) => <ContactForm {...this.props} />}
               />
             )}
-            {logged_in && this.investor && (
+            {logged_in && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == true) && (
               <Route
                 path="/greenlightindex"
                 render={(props) => (

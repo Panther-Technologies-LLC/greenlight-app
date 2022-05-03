@@ -53,7 +53,7 @@ class PitchCards extends Component {
                         </Button>
                       </Link>
                       <br />
-                      {this.props.current_user_profile && this.props.investor && 
+                      {this.props.current_user_profile && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == true) && 
                         <Button className="custom-btn btn btn-secondary" onClick={ ()=> this.handleSubmit(`${pitchCard.id}` )}>Greenlight!</Button>
                       }
                     </Card>

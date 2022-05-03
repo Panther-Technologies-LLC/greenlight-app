@@ -30,6 +30,7 @@ class Header extends Component {
     });
   }
   render() {
+    console.log(current_user_profile)
     const {
       logged_in,
       current_user,
@@ -56,12 +57,12 @@ class Header extends Component {
                 className="me-auto vert-center"
                 navbar
               >
-                {logged_in &&
+                {logged_in && 
                   <NavItem>
                     <NavLink to="/pitchcards" className="nav-link">Browse Startups</NavLink>
                   </NavItem>
                 }
-                {logged_in && investor && 
+                {logged_in && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == true) && 
                   <NavItem>
                     <NavLink to="/greenlightindex" className="nav-link">My Greenlights</NavLink>
                   </NavItem>
@@ -93,7 +94,7 @@ class Header extends Component {
                       <DropdownItem>
                         <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
                       </DropdownItem>
-                      {logged_in && investor &&
+                      {logged_in &&
                       <DropdownItem>
                         <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
                       </DropdownItem>
