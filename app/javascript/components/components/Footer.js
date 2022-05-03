@@ -10,11 +10,11 @@ class Footer extends Component {
             <div className="row">
               <div className="col-sm-12 col-md-6">
                 <h6 id="about">About</h6>
-                <p className="text-justify">Scanfcode.com <i>FUNDING OF THE FUTURE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help </p>
+                <p className="text-justify">Greenlight is an app which uses a model similar to tinder that provides investors and start-up companies a platform to connect. As an investor you are able to click or swipe through “pitch cards” created by Startup Company accounts. If you stumble across a project you’d like to possibly invest in, you can “greenlight” the project to connect with the company’s rep.
+</p>
               </div>
 
               <div className="col-xs-6 col-md-3">
-                <h6>Categories</h6>
                 <ul className="footer-links">
                 </ul>
               </div>
@@ -22,9 +22,8 @@ class Footer extends Component {
               <div className="col-xs-6 col-md-3">
                 <h6>Quick Links</h6>
                 <ul className="footer-links">
-                  <li><a href="#">About Us</a></li>
+                  <li><a href="aboutus">About Us</a></li>
                   <li><a href="#">Credits</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
                 </ul>
               </div>
             </div>
@@ -40,12 +39,6 @@ class Footer extends Component {
               </div>
 
               <div className="col-md-4 col-sm-6 col-xs-12">
-                <ul className="social-icons">
-                  <li><a className="facebook" href="#"><i className="fa fa-facebook"></i></a></li>
-                  <li><a className="twitter" href="#"><i className="fa fa-twitter"></i></a></li>
-                  <li><a className="dribbble" href="#"><i className="fa fa-dribbble"></i></a></li>
-                  <li><a className="linkedin" href="#"><i className="fa fa-linkedin"></i></a></li>
-                </ul>
               </div>
             </div>
           </div>
