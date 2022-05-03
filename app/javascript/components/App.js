@@ -175,7 +175,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (
+            {logged_in && (current_user_profile.is_investor === false) && (
               <Route
                 path="/pitchcardnew"
                 render={(props) => (
@@ -187,7 +187,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (
+            {logged_in && (current_user_profile.is_investor == true) && (
               <Route
                 path="/pitchcardedit/:id"
                 render={(props) => {
@@ -218,13 +218,13 @@ class App extends React.Component {
                 )}
               />
             )}
-            {logged_in && (
+            {logged_in && (current_user_profile.is_investor == true) && (
               <Route
                 path="/contactform"
                 render={(props) => <ContactForm {...this.props} />}
               />
             )}
-            {logged_in && (
+            {logged_in && (current_user_profile.is_investor == true) && (
               <Route
                 path="/greenlightindex"
                 render={(props) => (

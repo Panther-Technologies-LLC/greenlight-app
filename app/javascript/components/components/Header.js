@@ -35,7 +35,8 @@ class Header extends Component {
       current_user,
       new_user_route,
       sign_in_route,
-      sign_out_route
+      sign_out_route,
+      current_user_profile
     } = this.props
     return (
       <>
@@ -57,7 +58,12 @@ class Header extends Component {
               >
                 {logged_in &&
                   <NavItem>
-                    <NavLink to="/pitchcards" className="nav-link">Pitch Cards</NavLink>
+                    <NavLink to="/pitchcards" className="nav-link">Browse Startups</NavLink>
+                  </NavItem>
+                }
+                {logged_in && (current_user_profile.is_investor == true) && 
+                  <NavItem>
+                    <NavLink to="/greenlightindex" className="nav-link">My Greenlights</NavLink>
                   </NavItem>
                 }
               </Nav>
@@ -70,6 +76,7 @@ class Header extends Component {
                 </NavbarText>
                 {logged_in &&
                   <UncontrolledDropdown
+                  
                     inNavbar
                     nav
                   >
@@ -77,7 +84,7 @@ class Header extends Component {
                       caret
                       nav
                     >
-                      <i className="fa-solid fa-user green nav-icon"></i>
+                    <i className="fa-solid fa-user green nav-icon"></i>
                     </DropdownToggle>
                     <DropdownMenu
                       end
@@ -86,17 +93,16 @@ class Header extends Component {
                       <DropdownItem>
                         <NavLink to="/userprofilenew" className="nav-link">Create Your Profile</NavLink>
                       </DropdownItem>
+                      {logged_in && (current_user_profile.is_investor === false) &&
                       <DropdownItem>
                         <NavLink to="/pitchcardnew" className="nav-link">Create Pitch Card</NavLink>
                       </DropdownItem>
-                      <DropdownItem>
-                        <a href="/greenlightindex" className="nav-link">Greenlight List</a>
-                      </DropdownItem>
-                      <DropdownItem>
-                      {logged_in &&
-                        <a href={sign_out_route} className="nav-link">Logout</a>
                       }
+                      {logged_in &&
+                      <DropdownItem>
+                        <a href={sign_out_route} className="nav-link">Logout</a>
                       </DropdownItem>
+                      }
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 }
