@@ -13,7 +13,7 @@ class PitchCards extends Component {
     }
 
   }
-
+  
   handleSubmit = (payload) => {
     let { newGreenlight } = this.state
     newGreenlight.pitch_card_id = payload
@@ -27,6 +27,7 @@ class PitchCards extends Component {
   }
 
   render() {
+
     return(
       <>
         <div className="fullpagemargins">
@@ -52,7 +53,7 @@ class PitchCards extends Component {
                         </Button>
                       </Link>
                       <br />
-                      {this.props.current_user_profile && (this.props.current_user_profile.is_investor == true) && 
+                      {this.props.current_user_profile && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == true) && 
                         <Button className="custom-btn btn btn-secondary" onClick={ ()=> this.handleSubmit(`${pitchCard.id}` )}>Greenlight!</Button>
                       }
                     </Card>

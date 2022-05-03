@@ -22,6 +22,7 @@ class App extends React.Component {
       pitchCards: [],
       userProfiles: [],
       greenLights: [],
+      investor: false,
     };
   }
 
@@ -30,6 +31,11 @@ class App extends React.Component {
     this.readUserProfile();
     this.readGreenLights();
   }
+
+  // investorChecker = () => {
+  //   if(this.props.current_user_profile !== undefined && this.props.current_user_profile !== null ){
+  //   let investor = (this.props.current_user_profile.is_investor == true
+  //     )}
 
   readUserProfile = () => {
     fetch("/user_profiles")
@@ -137,13 +143,15 @@ class App extends React.Component {
       sign_out_route,
       current_user_profile,
     } = this.props;
+
     return (
       <>
         <Router>
-          <Header {...this.props} />
+          <Header {...this.props}
+          />
           <Switch>
             <Route exact path="/" component={Home} {...this.props} />
-            {logged_in && (
+            {logged_in && ( 
               <Route
                 path="/pitchcards"
                 render={(props) => (
@@ -156,7 +164,7 @@ class App extends React.Component {
                 )}
               />
             )}
-            {logged_in && (
+            {logged_in && (    
               <Route
                 path="/pitchcardshow/:id"
                 render={(props) => {
@@ -175,7 +183,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (current_user_profile.is_investor === false) && (
+            {logged_in && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == false) && (
               <Route
                 path="/pitchcardnew"
                 render={(props) => (
@@ -187,7 +195,7 @@ class App extends React.Component {
               />
             )}
 
-            {logged_in && (current_user_profile.is_investor == true) && (
+            {logged_in && (
               <Route
                 path="/pitchcardedit/:id"
                 render={(props) => {
@@ -218,13 +226,13 @@ class App extends React.Component {
                 )}
               />
             )}
-            {logged_in && (current_user_profile.is_investor == true) && (
+            {logged_in && (
               <Route
                 path="/contactform"
                 render={(props) => <ContactForm {...this.props} />}
               />
             )}
-            {logged_in && (current_user_profile.is_investor == true) && (
+            {logged_in && (this.props.current_user_profile !== null) && (this.props.current_user_profile.is_investor == true) && (
               <Route
                 path="/greenlightindex"
                 render={(props) => (
