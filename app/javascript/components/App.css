@@ -101,6 +101,16 @@ object-fit: fill;
 
 /* -----------------Footer-----------------*/
 
+.logo{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.logo img{
+  width: 200px;
+  padding: 15px;
+}
+
 .site-footer {
   background-color:#26272b;
   padding:45px 0 20px;

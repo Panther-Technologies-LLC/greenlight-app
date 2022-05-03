@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PantherTechLogo from '../assets/panther_tech_logo.png' // with import
 
 class Footer extends Component {
   render() {
@@ -10,8 +11,11 @@ class Footer extends Component {
             <div className="row">
               <div className="col-sm-12 col-md-6">
                 <h6 id="about">About</h6>
+                <div className="logo">
+                <img src ={PantherTechLogo} />
                 <p className="text-justify">Greenlight is an app which uses a model similar to tinder that provides investors and start-up companies a platform to connect. As an investor you are able to click or swipe through “pitch cards” created by Startup Company accounts. If you stumble across a project you’d like to possibly invest in, you can “greenlight” the project to connect with the company’s rep.
-</p>
+                </p>
+                </div>
               </div>
 
               <div className="col-xs-6 col-md-3">
