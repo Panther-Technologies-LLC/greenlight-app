@@ -13,7 +13,6 @@ import GreenLightIndex from "./pages/GreenLightIndex";
 import NotFound from "./pages/NotFound";
 import AboutUs from "./pages/AboutUs";
 import { Button } from 'reactstrap';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends React.Component {
@@ -23,6 +22,7 @@ class App extends React.Component {
       pitchCards: [],
       userProfiles: [],
       greenLights: [],
+      selectedPitchCard: [],
     };
   }
 
@@ -137,6 +137,21 @@ class App extends React.Component {
       <Redirect to="/greenlightindex"/>
   };
 
+  selectPitchCard = (card) => { 
+    if(card !== undefined) {
+      this.setState({selectedPitchCard: card}, () => {
+        this.setState({submitted: true}, () => {
+          if (this.state.submitted = true){
+            // window.confirm("You've Greenlit this Startup!");
+            // <Redirect to="/contactform"/>
+            // window.location.replace("/contactform");
+          }
+        })
+      })
+    }
+  };
+
+
   render() {
     const {
       logged_in,
@@ -160,7 +175,9 @@ class App extends React.Component {
                     {...this.props}
                     pitchCards={this.state.pitchCards}
                     greenLights={this.state.greenLights}
+                    selectedPitchCard={this.state.selectedPitchCard}
                     createGreenLight={this.createGreenLight}
+                    selectPitchCard={this.selectPitchCard}
                   />
                 )}
               />
@@ -230,7 +247,12 @@ class App extends React.Component {
             {logged_in && (
               <Route
                 path="/contactform"
-                render={(props) => <ContactForm {...this.props} />}
+                render={(props) => (
+                  <ContactForm 
+                    {...this.props}
+                    createEmail={this.createEmail}
+                  />
+                )}
               />
             )}
             {logged_in && (

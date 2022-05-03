@@ -36,4 +36,7 @@ class GreenlightsController < ApplicationController
   def strong_greenlight_params
     params.require(:greenlight).permit(:user_profile_id, :pitch_card_id)
   end
+  def strong_email_params
+    params.require(:greenlight_email).permit(:company_email, :investor_email, :message)
+  end
 end

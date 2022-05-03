@@ -6,15 +6,22 @@ import { NavLink, Link } from 'react-router-dom'
 class ContactForm extends Component {
   constructor(props){
   super(props)
-  this.state = { 
-    newEmail: {
-      company_email: "",
-      investor_email: "",
-      subject: "",
-      message: "",
-    },
-    submitted:false
-  }
+  console.log('props')
+  console.log(props)
+  console.log('props')
+
+  console.log('this.state')
+  console.log(this.state)
+  console.log('this.state')
+  // this.state = { 
+  //   newEmail: {
+  //     company_email: "",
+  //     investor_email: "",
+  //     subject: "",
+  //     message: "",
+  //   },
+  //   submitted:false
+  // }
 }
 
 handleChange = (e) => {
@@ -39,6 +46,8 @@ handleDelete = () => {
 
     render() {
       console.log(this.state.newEmail)
+      console.log(this.state)
+      console.log(this.props)
         return (
           <div className="form-page-pitchcard">
           <h2>Contact Your Startup</h2>
@@ -46,35 +55,26 @@ handleDelete = () => {
               <div className="PitchCardNew">
               <Form>   
                 <FormGroup>
-                  <Label for="company_email">Company Email</Label>
+                  <Label for="company_email">Company Email: {this.props.selectedPitchcard.company_email}</Label>
                   <Input
                     className="input"
                     name="company_email"
                     text="text"
                     onChange={this.handleChange}
-                    value={""}
+                    value={''}
+                    type="hidden"
                   />
                 </FormGroup>
                 
                 <FormGroup>
-                  <Label for="investor_email">Your Email</Label>
+                  <Label for="investor_email">Your Email: {this.props.current_user.email}</Label>
                   <Input
                     className="input"
                     name="investor_email"
                     text="text"
                     onChange={this.handleChange}
-                    value={""}
-                  />
-                </FormGroup>
-
-                <FormGroup>
-                  <Label for="subject">Subject</Label>
-                  <Input
-                    className="input"
-                    name="subject"
-                    text="text"
-                    onChange={this.handleChange}
-                    value={""}
+                    value={this.props.current_user_profile.investor_email}
+                    type="hidden"
                   />
                 </FormGroup>
 

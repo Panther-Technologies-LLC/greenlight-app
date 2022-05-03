@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardTitle, Col, CardImg, Button } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 class PitchCards extends Component {
   constructor(props){
@@ -11,19 +11,15 @@ class PitchCards extends Component {
       },
       submitted:false
     }
-
   }
 
   handleSubmit = (payload) => {
     let { newGreenlight } = this.state
-    newGreenlight.pitch_card_id = payload
+    newGreenlight.pitch_card_id = payload    
     this.setState({newGreenlight: newGreenlight})
-    this.props.createGreenLight({...this.state.newGreenlight, user_profile_id: this.props.current_user_profile.id})
-    this.setState({submitted:true})
-    if (this.state.submitted = true){
-      window.confirm("You've Greenlit this Startup!")
-      window.location.replace("/greenlightindex");
-    }
+    let cards = this.props.pitchCards 
+    let cardpicker = cards.find(({id}) => parseInt(id) == payload)
+    this.props.selectPitchCard(cardpicker) 
   }
 
   render() {
