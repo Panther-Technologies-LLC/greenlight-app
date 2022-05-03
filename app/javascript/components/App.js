@@ -130,15 +130,11 @@ class App extends React.Component {
   };
 
   createEmail = () => {
-    fetch("/contact", {
-      body: JSON.stringify(),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "GET",
-    })
+    alert("this is working")
+    fetch("/contact")
       .then((response) => response.json())
       .catch((errors) => console.log("Email create errors:", errors));
+      <Redirect to="/greenlightindex"/>
   };
 
   render() {
@@ -155,7 +151,7 @@ class App extends React.Component {
         <Router>
           <Header {...this.props} />
           <Switch>
-            <Route exact path="/" component={Home} {...this.props} />
+            <Route exact path="/" component={Home} {...this.props} createEmail={this.createEmail} />
             {logged_in && (
               <Route
                 path="/pitchcards"
@@ -255,9 +251,11 @@ class App extends React.Component {
             />
             <Route component={NotFound} />
           </Switch>
-          <Button onClick={this.createEmail}>Email</Button>
           <Footer {...this.props} />
         </Router>
+        <div>
+        <Button onClick={this.createEmail}>Email</Button>
+        </div>
       </>
     );
   }

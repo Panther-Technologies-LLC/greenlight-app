@@ -18,9 +18,10 @@ class GreenlightsController < ApplicationController
 
   def create_email
       GreenlightMailer.new_greenlight_email.deliver_later
+      puts "email created"
       flash[:success] = "Thank you for your interest in this startup! We'll contact you soon!"
-      redirect_to greenlight_index_path
   end
+  helper_method :create_email
 
   def destroy
     greenlight = Greenlight.find(params[:id])

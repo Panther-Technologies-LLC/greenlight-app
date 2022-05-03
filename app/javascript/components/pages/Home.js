@@ -18,7 +18,7 @@ class Home extends Component {
               <h1>Funding of the Future</h1>
                   <a href="/users/sign_up" className="custom-btn btn btn-secondary"> Sign Up</a>
               <h5>Connecting Investors and Startups one Greenlight at a time</h5>
-              
+   
             </div>
           </div>
         </div>
