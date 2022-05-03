@@ -15,6 +15,7 @@ class PitchCardShow extends Component {
 
   render() {
     console.log(this.props.pitchCard)
+    console.log(this.props.current_user_profile)
     return (
       <>
         <div className="fullpagemargins">
@@ -34,17 +35,21 @@ class PitchCardShow extends Component {
                         {this.props.pitchCard && this.props.pitchCard.pitch}
                       </CardText>
                     <br />
+                    {this.props.pitchCard && this.props.current_user_profile && (this.props.pitchCard.user_profile_id == this.props.current_user_profile.id) && (
                     <Link to={`/pitchcardedit/${this.props.pitchCard && this.props.pitchCard.id}`}>
                       <Button className="pitch-button">
                         Edit Pitch Card
                       </Button>
                     </Link>
+                    )}
                     <br/>
+                    {this.props.pitchCard && this.props.current_user_profile && (this.props.pitchCard.user_profile_id == this.props.current_user_profile.id) && (
                     <Link to={"/pitchcards"}>
                       <Button onClick={this.handleDelete}>
                         Delete this Pitch Card
                       </Button>
                     </Link>
+                    )}
                   </Card>
             </Col>
           </div>
