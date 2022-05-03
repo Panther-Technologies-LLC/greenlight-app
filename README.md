@@ -6,7 +6,7 @@ Key things our project can do is create 2 different types of user accounts(Start
 
 Running the project
 
-Live Version: "link here"
+Live Version: https://desolate-badlands-68407.herokuapp.com/
 
 From the repository:
 1. Clone this project locally
